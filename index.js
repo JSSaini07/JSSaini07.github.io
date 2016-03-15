@@ -37,12 +37,14 @@ function getCoordinatesTouch()
 {
 	coords.x=e.changedTouches[0].pageX;
 	coords.y=e.changedTouches[0].pageY;
-	console.log("setting "coords.x+" "+coords.y)
+	console.log("setting "+coords.x+" "+coords.y)
 }
+
+console.log((selectListeners.down)[devicetouch])
 
 canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	coordinatesFetch[devicetouch](e)
-	alert("setted "coords.x+" "+coords.y);
+	alert("setted "+coords.x+" "+coords.y);
 	drawState=true
 })
 
