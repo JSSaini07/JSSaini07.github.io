@@ -25,7 +25,7 @@ selectListeners={
 	'move':['mousemove','touchmove']
 }
 
-devicetouch=0
+devicetouch=1
 
 function getCoordinates(e)
 {
