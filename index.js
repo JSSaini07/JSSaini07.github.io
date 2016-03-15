@@ -9,23 +9,44 @@ var context=canvas.getContext('2d');
 
 //////////////// draw logic //////////////////
 
-enterState=false
-
-x=0
-y=0
-
 lineWidth=1
-drawState=false
 
+enterState=false
+drawState=false
 eraserstate=-1
 
-canvas.addEventListener('touchstart',function(e){
-	x=e.changedTouches[0].pageX
-	y=e.changedTouches[0].pageY
+coords={'x':0,'y':0}
+
+coordinnateFetch=[getCoordinates,getCoordinatesTouch]
+
+selectListeners={
+	'down':['mousedown','touchstart'],
+	'up':['mouseup','touchend'],
+	'move':['mousemove','touchmove']
+}
+
+devicetouch=1
+
+function getCoordinates(e)
+{
+	coords.x=e.pageX;
+	coords.y=e.pageY;
+}
+
+function getCoordinatesTouch()
+{
+	coords.x=e.changedTouches[0].pageX;
+	coords.y=e.changedTouches[0].pageY;
+}
+
+canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
+	coordinnateFetch[devicetouch](e)
+	x=coords.x
+	y=coords.y
 	drawState=true
 })
 
-canvas.addEventListener('touchmove',function(e){
+canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 	if(eraserstate==1)
 		{
 			if(document.getElementsByClassName('jscolor')[0].value!=document.getElementsByClassName('jscolor')[1].value)
@@ -38,25 +59,27 @@ canvas.addEventListener('touchmove',function(e){
 	{
 		console
 		context.beginPath()
-		context.moveTo(x,y)
+		context.moveTo(coords.x,coords.y)
 		context.strokeStyle="#"+document.getElementsByClassName('jscolor')[0].value
 		context.lineJoin = 'round';
 		context.miterLimit = 2;
 		context.lineWidth=lineWidth
-		context.lineTo(e.changedTouches[0].pageX,e.changedTouches[0].pageY)
+		coordinnateFetch[devicetouch](e)
+		context.lineTo(coords.x,coords.y)
 		context.stroke()
 		context.fill()
-		x=e.changedTouches[0].pageX
-		y=e.changedTouches[0].pageY
+		coordinnateFetch[devicetouch](e)
+		x=coords.x
+		y=coords.y
 	}
 })
 
-canvas.addEventListener('touchend',function(e){
+canvas.addEventListener((selectListeners.up)[devicetouch],function(e){
 	enterState=false
 	drawState=false
 })
 
-canvas.addEventListener('touchleave',function(){
+canvas.addEventListener((selectListeners.up)[devicetouch],function(){
 	drawState=false
 })
 
@@ -68,11 +91,11 @@ fontsize=document.getElementById('fontsize')
 
 enterState=false
 
-controller.addEventListener('touchstart',function(){
+controller.addEventListener((selectListeners.down)[devicetouch],function(){
 	enterState=true
 })
 
-controller.addEventListener('touchmove',function(e){
+controller.addEventListener((selectListeners.move)[devicetouch],function(e){
 	if(enterState==true)
 	{
 		slider.style="margin-left:"+(e.x-100)+"px;"
@@ -82,17 +105,17 @@ controller.addEventListener('touchmove',function(e){
 	}
 })
 
-controller.addEventListener('touchstart',function(){
+controller.addEventListener((selectListeners.down)[devicetouch],function(){
 	enterState=false
 })
 
 
-slider.addEventListener('touchstart',function(e){
+slider.addEventListener((selectListeners.down)[devicetouch],function(e){
 	enterState=true
 	fontsize.style="display:initial";
 })
 
-slider.addEventListener('touchend',function(e){
+slider.addEventListener((selectListeners.up)[devicetouch],function(e){
 	enterState=false
 	fontsize.style="display:none";
 })
