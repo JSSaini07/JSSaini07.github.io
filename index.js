@@ -71,6 +71,14 @@ canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 				document.getElementsByClassName('jscolor')[0].style='background:#'+document.getElementsByClassName('jscolor')[0].value;
 			}	
 		}
+	if(slider.offsetLeft<=controller.offsetLeft)
+	{
+			slider.style="margin-left:0px";
+	}
+	if(slider.offsetLeft>=controller.offsetLeft+100)
+	{
+		slider.style="margin-left:100px";
+	}
 	if(drawState==true)
 	{
 		context.beginPath()
@@ -98,8 +106,6 @@ controller=document.getElementById('sizechange')
 slider=document.getElementById('sizecontroller')
 fontsize=document.getElementById('fontsize')
 
-enterState=false
-
 controller.addEventListener((selectListeners.down)[devicetouch],function(){
 	enterState=true
 })
@@ -110,7 +116,7 @@ controller.addEventListener((selectListeners.move)[devicetouch],function(e){
 		coordinatesFetch[devicetouch](e)
 		slider.style="margin-left:"+(coords.x-100)+"px;"
 		fontsize.style="margin-left:"+(coords.x-100)+"px;"
-		fontsize.innerHTML=fontsize.style.marginLeft;
+		fontsize.innerHTML=(parseInt(fontsize.style.marginLeft)+5)+"px";
 		lineWidth=1+parseInt((slider.style.marginLeft).split('px')[0])/20;
 	}
 })
@@ -118,7 +124,6 @@ controller.addEventListener((selectListeners.move)[devicetouch],function(e){
 controller.addEventListener((selectListeners.up)[devicetouch],function(){
 	enterState=false
 })
-
 
 slider.addEventListener((selectListeners.down)[devicetouch],function(e){
 	enterState=true
@@ -139,6 +144,7 @@ erase.addEventListener('click',function(){
 	if(eraserstate==1)
 	{
 		erase.innerHTML="Eraser Selected"
+		document.getElementById('sizetext').innerHTML="Eraser Size"
 		document.getElementsByClassName('jscolor')[0].value=background.value;
 		document.getElementsByClassName('jscolor')[0].style='background:#'+document.getElementsByClassName('jscolor')[0].value;
 		document.body.style="cursor:url('./eraser.png') 15 0, auto;";
@@ -146,6 +152,7 @@ erase.addEventListener('click',function(){
 	else
 	{
 		erase.innerHTML="Select Eraser"
+		document.getElementById('sizetext').innerHTML="Pen Size"
 		document.getElementsByClassName('jscolor')[0].value='000000';
 		document.getElementsByClassName('jscolor')[0].style='background:#'+document.getElementsByClassName('jscolor')[0].value;
 		document.body.style="cursor:url('./pen.png') 15 0, auto;";
