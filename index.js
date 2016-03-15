@@ -19,13 +19,13 @@ drawState=false
 
 eraserstate=-1
 
-canvas.addEventListener('mousedown',function(e){
+canvas.addEventListener('touchstart',function(e){
 	x=e.x
 	y=e.y
 	drawState=true
 })
 
-canvas.addEventListener('mousemove',function(e){
+canvas.addEventListener('touchmove',function(e){
 	if(eraserstate==1)
 		{
 			if(document.getElementsByClassName('jscolor')[0].value!=document.getElementsByClassName('jscolor')[1].value)
@@ -50,12 +50,12 @@ canvas.addEventListener('mousemove',function(e){
 	}
 })
 
-canvas.addEventListener('mouseup',function(e){
+canvas.addEventListener('touchend',function(e){
 	enterState=false
 	drawState=false
 })
 
-canvas.addEventListener('mouseleave',function(){
+canvas.addEventListener('touchleave',function(){
 	drawState=false
 })
 
@@ -67,11 +67,11 @@ fontsize=document.getElementById('fontsize')
 
 enterState=false
 
-controller.addEventListener('mousedown',function(){
+controller.addEventListener('touchstart',function(){
 	enterState=true
 })
 
-controller.addEventListener('mousemove',function(e){
+controller.addEventListener('touchmove',function(e){
 	if(enterState==true)
 	{
 		slider.style="margin-left:"+(e.x-100)+"px;"
@@ -81,17 +81,17 @@ controller.addEventListener('mousemove',function(e){
 	}
 })
 
-controller.addEventListener('mouseup',function(){
+controller.addEventListener('touchstart',function(){
 	enterState=false
 })
 
 
-slider.addEventListener('mousedown',function(e){
+slider.addEventListener('touchstart',function(e){
 	enterState=true
 	fontsize.style="display:initial";
 })
 
-slider.addEventListener('mouseup',function(e){
+slider.addEventListener('touchend',function(e){
 	enterState=false
 	fontsize.style="display:none";
 })
