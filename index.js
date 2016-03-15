@@ -9,10 +9,6 @@ var context=canvas.getContext('2d');
 
 //////////////// draw logic //////////////////
 
-canvas.addEventListener('touchstart',function(e){
-	alert('here')
-})
-
 lineWidth=1
 
 enterState=false
@@ -46,7 +42,7 @@ function getCoordinatesTouch()
 
 console.log((selectListeners.down)[devicetouch])
 
-canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
+canvas.addEventListener('touchstart',/*(selectListeners.down)[devicetouch],*/function(e){
 	coordinatesFetch[devicetouch](e)
 	alert("setted "+coords.x+" "+coords.y);
 	drawState=true
