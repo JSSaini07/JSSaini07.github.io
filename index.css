@@ -82,9 +82,7 @@ html,body {
 
 #clear {
 	height:40px;
-	margin-left:20px;
 	display: inline-block;
-	float:left;
 	color:white;
 	line-height:40px;
 	background: #333333;
