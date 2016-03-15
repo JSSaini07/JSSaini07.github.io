@@ -20,13 +20,12 @@ drawState=false
 eraserstate=-1
 
 canvas.addEventListener('touchstart',function(e){
-	x=e.x
-	y=e.y
+	x=e.changesTouches[0].pageX
+	y=e.changedTouches[0].pageY
 	drawState=true
 })
 
 canvas.addEventListener('touchmove',function(e){
-	alert('drawState');
 	if(eraserstate==1)
 		{
 			if(document.getElementsByClassName('jscolor')[0].value!=document.getElementsByClassName('jscolor')[1].value)
@@ -37,17 +36,18 @@ canvas.addEventListener('touchmove',function(e){
 		}
 	if(drawState==true)
 	{
+		console
 		context.beginPath()
 		context.moveTo(x,y)
 		context.strokeStyle="#"+document.getElementsByClassName('jscolor')[0].value
 		context.lineJoin = 'round';
 		context.miterLimit = 2;
 		context.lineWidth=lineWidth
-		context.lineTo(e.x,e.y)
+		context.lineTo(e.changedTouches[0].pageX,e.changesTouches[0].pageY)
 		context.stroke()
 		context.fill()
-		x=e.x
-		y=e.y
+		x=e.changesTouches[0].pageX
+	y=e.changedTouches[0].pageY
 	}
 })
 
