@@ -68,6 +68,7 @@ fontsize=document.getElementById('fontsize')
 enterState=false
 
 controller.addEventListener('touchstart',function(){
+	alert('touch started');
 	enterState=true
 })
 
