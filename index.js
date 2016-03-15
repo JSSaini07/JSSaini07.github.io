@@ -94,8 +94,9 @@ controller.addEventListener((selectListeners.down)[devicetouch],function(){
 controller.addEventListener((selectListeners.move)[devicetouch],function(e){
 	if(enterState==true)
 	{
-		slider.style="margin-left:"+(e.x-100)+"px;"
-		fontsize.style="margin-left:"+(e.x-100)+"px;"
+		coordinatesFetch[devicetouch](e)
+		slider.style="margin-left:"+(coords.x-100)+"px;"
+		fontsize.style="margin-left:"+(coords.x-100)+"px;"
 		fontsize.innerHTML=fontsize.style.marginLeft;
 		lineWidth=1+parseInt((slider.style.marginLeft).split('px')[0])/20;
 	}
