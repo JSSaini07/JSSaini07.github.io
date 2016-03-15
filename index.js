@@ -68,13 +68,13 @@ fontsize=document.getElementById('fontsize')
 enterState=false
 
 controller.addEventListener('touchstart',function(){
-	alert('touch started');
 	enterState=true
 })
 
 controller.addEventListener('touchmove',function(e){
 	if(enterState==true)
 	{
+		alert('move started');
 		slider.style="margin-left:"+(e.x-100)+"px;"
 		fontsize.style="margin-left:"+(e.x-100)+"px;"
 		fontsize.innerHTML=fontsize.style.marginLeft;
