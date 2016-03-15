@@ -20,7 +20,7 @@ drawState=false
 eraserstate=-1
 
 canvas.addEventListener('touchstart',function(e){
-	x=e.changesTouches[0].pageX
+	x=e.changedTouches[0].pageX
 	y=e.changedTouches[0].pageY
 	drawState=true
 })
@@ -43,11 +43,11 @@ canvas.addEventListener('touchmove',function(e){
 		context.lineJoin = 'round';
 		context.miterLimit = 2;
 		context.lineWidth=lineWidth
-		context.lineTo(e.changedTouches[0].pageX,e.changesTouches[0].pageY)
+		context.lineTo(e.changedTouches[0].pageX,e.changedTouches[0].pageY)
 		context.stroke()
 		context.fill()
-		x=e.changesTouches[0].pageX
-	y=e.changedTouches[0].pageY
+		x=e.changedTouches[0].pageX
+		y=e.changedTouches[0].pageY
 	}
 })
 
