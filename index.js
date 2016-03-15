@@ -43,12 +43,9 @@ function getCoordinatesTouch()
 console.log((selectListeners.down)[devicetouch])
 
 canvas.addEventListener('touchstart',/*(selectListeners.down)[devicetouch],*/function(e){
-	/*
 	(coordinatesFetch[devicetouch])(e)
 	alert("setted "+coords.x+" "+coords.y);
 	drawState=true
-	*/
-	alert('hey')
 })
 
 canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
