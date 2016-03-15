@@ -17,7 +17,7 @@ eraserstate=-1
 
 coords={'x':0,'y':0}
 
-coordinnateFetch=[getCoordinates,getCoordinatesTouch]
+coordinatesFetch=[getCoordinates,getCoordinatesTouch]
 
 selectListeners={
 	'down':['mousedown','touchstart'],
@@ -40,8 +40,7 @@ function getCoordinatesTouch()
 }
 
 canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
-	alert(coords.x+" "+coords.y)
-	coordinnateFetch[devicetouch](e)
+	coordinatesFetch[devicetouch](e)
 	drawState=true
 })
 
@@ -62,20 +61,17 @@ canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 		context.lineJoin = 'round';
 		context.miterLimit = 2;
 		context.lineWidth=lineWidth
-		coordinnateFetch[devicetouch](e)
+		coordinatesFetch[devicetouch](e)
 		context.lineTo(coords.x,coords.y)
 		context.stroke()
 		context.fill()
-		coordinnateFetch[devicetouch](e)
+		coordinatesFetch[devicetouch](e)
 	}
+	alert(coords.x+" "+coords.y);
 })
 
 canvas.addEventListener((selectListeners.up)[devicetouch],function(e){
 	enterState=false
-	drawState=false
-})
-
-canvas.addEventListener((selectListeners.up)[devicetouch],function(){
 	drawState=false
 })
 
