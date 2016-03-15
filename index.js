@@ -40,6 +40,7 @@ function getCoordinatesTouch()
 }
 
 canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
+	alert(coords.x+" "+coords.y)
 	coordinnateFetch[devicetouch](e)
 	drawState=true
 })
