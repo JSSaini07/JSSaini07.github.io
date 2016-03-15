@@ -101,7 +101,7 @@ controller.addEventListener((selectListeners.move)[devicetouch],function(e){
 	}
 })
 
-controller.addEventListener((selectListeners.down)[devicetouch],function(){
+controller.addEventListener((selectListeners.up)[devicetouch],function(){
 	enterState=false
 })
 
