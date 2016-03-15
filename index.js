@@ -26,6 +26,7 @@ canvas.addEventListener('touchstart',function(e){
 })
 
 canvas.addEventListener('touchmove',function(e){
+	alert('drawState');
 	if(eraserstate==1)
 		{
 			if(document.getElementsByClassName('jscolor')[0].value!=document.getElementsByClassName('jscolor')[1].value)
@@ -74,7 +75,6 @@ controller.addEventListener('touchstart',function(){
 controller.addEventListener('touchmove',function(e){
 	if(enterState==true)
 	{
-		alert('move started');
 		slider.style="margin-left:"+(e.x-100)+"px;"
 		fontsize.style="margin-left:"+(e.x-100)+"px;"
 		fontsize.innerHTML=fontsize.style.marginLeft;
