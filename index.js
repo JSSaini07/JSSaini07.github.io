@@ -37,10 +37,12 @@ function getCoordinatesTouch()
 {
 	coords.x=e.changedTouches[0].pageX;
 	coords.y=e.changedTouches[0].pageY;
+	console.log("setting "coords.x+" "+coords.y)
 }
 
 canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	coordinatesFetch[devicetouch](e)
+	alert("setted "coords.x+" "+coords.y);
 	drawState=true
 })
 
@@ -67,7 +69,6 @@ canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 		context.fill()
 		coordinatesFetch[devicetouch](e)
 	}
-	alert(coords.x+" "+coords.y);
 })
 
 canvas.addEventListener((selectListeners.up)[devicetouch],function(e){
