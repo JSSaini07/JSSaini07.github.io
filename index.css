@@ -4,6 +4,7 @@ html,body {
 	margin:0px;
 	overflow: hidden;
 	cursor:url('./pen.png') 15 0, auto;
+	overflow: hidden;
 }
 
 
@@ -55,7 +56,7 @@ html,body {
 	float: left;
 	height:40px;
 	width:10px;
-	background: red;
+	background: #31D99C;
 }
 
 #fontsize {
@@ -74,12 +75,8 @@ html,body {
 	display: inline-block;
 	height:40px;
 	line-height:40px;
-	background:#3C3C3C;
-	padding-left:10px;
-	padding-right:10px; 
-	margin-left:20px;
-	color:white;
-	float:left;
+	background:#C7C7C7;
+	color:#153B87;
 }
 
 
@@ -96,23 +93,15 @@ html,body {
 
 #pencolor {
 	display: inline-block;
-	margin-left:20px;
-	float:left;
-	padding-left:10px;
-	padding-right: 10px;
 	line-height:40px;
 	height:100%;
 	color:white;
 }
 
 #backgroundcolor {
-	color:white;
-	margin-left:20px;
-	padding-left:10px;
-	padding-right: 10px; 
+	color:white; 
 	height: 100%;
 	line-height:40px;
-	float:left;
 }
 
 .jscolor {
@@ -120,6 +109,36 @@ html,body {
 	width:80px;
 	height:36px;
 	padding:0px;
+}
+
+ul {
+	display: inline-block;
+	list-style: none;
+}
+
+li {
+	margin-top: 4px;
+	margin-left: -20px;
+}
+
+#menu {
+	display:inline-block;
 	float:left;
-	vertical-align: top;
+	width:200px;
+	height:40px;
+	background: #2A2A2A;
+	margin-left:20px;
+	font-weight:bold;
+	overflow:hidden;
+}
+
+#menubutton {
+	width:200px;
+	height:40px;
+	background:yellow;
+	margin-left:-20px;
+	margin-top:-20px;
+	background: #F92E2E;
+	text-align: center;
+	line-height: 40px;
 }

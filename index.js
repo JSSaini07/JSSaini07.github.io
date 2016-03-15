@@ -32,6 +32,19 @@ if('ontouchstart' in document.documentElement)
 	devicetouch=1;
 }
 
+menu=document.getElementById('menu')
+
+menu.addEventListener('click',function(){
+	if(menu.offsetHeight==40)
+	{
+		menu.style="height:initial";
+	}
+	else
+	{
+		menu.style="height:40px";
+	}
+})
+
 function getCoordinates(e)
 {
 	coords.x=e.pageX;
