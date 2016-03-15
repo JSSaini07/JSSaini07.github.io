@@ -27,6 +27,11 @@ selectListeners={
 
 devicetouch=0
 
+if('ontouchstart' in document.documentElement)
+{
+	devicetouch=1;
+}
+
 function getCoordinates(e)
 {
 	coords.x=e.pageX;
@@ -38,10 +43,6 @@ function getCoordinatesTouch(e)
 	coords.x=e.changedTouches[0].pageX;
 	coords.y=e.changedTouches[0].pageY;
 }
-
-canvas.addEventListener('touchstart',function(){
-	devicetouch=1;
-})
 
 canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	(coordinatesFetch[devicetouch])(e)
