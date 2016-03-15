@@ -104,7 +104,6 @@ canvas.addEventListener((selectListeners.up)[devicetouch],function(e){
 
 controller=document.getElementById('sizechange')
 slider=document.getElementById('sizecontroller')
-fontsize=document.getElementById('fontsize')
 
 controller.addEventListener((selectListeners.down)[devicetouch],function(){
 	enterState=true
@@ -114,9 +113,7 @@ controller.addEventListener((selectListeners.move)[devicetouch],function(e){
 	if(enterState==true)
 	{
 		coordinatesFetch[devicetouch](e)
-		slider.style="margin-left:"+(coords.x-100)+"px;"
-		fontsize.style="margin-left:"+(coords.x-100)+"px;"
-		fontsize.innerHTML=(parseInt(fontsize.style.marginLeft)+5)+"px";
+		slider.style="margin-left:"+(coords.x-80)+"px;"
 		lineWidth=1+parseInt((slider.style.marginLeft).split('px')[0])/20;
 	}
 })
