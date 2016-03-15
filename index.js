@@ -25,7 +25,7 @@ selectListeners={
 	'move':['mousemove','touchmove']
 }
 
-devicetouch=1
+devicetouch=0
 
 function getCoordinates(e)
 {
@@ -41,8 +41,6 @@ function getCoordinatesTouch()
 
 canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	coordinnateFetch[devicetouch](e)
-	x=coords.x
-	y=coords.y
 	drawState=true
 })
 
@@ -57,7 +55,6 @@ canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 		}
 	if(drawState==true)
 	{
-		console
 		context.beginPath()
 		context.moveTo(coords.x,coords.y)
 		context.strokeStyle="#"+document.getElementsByClassName('jscolor')[0].value
@@ -69,8 +66,6 @@ canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 		context.stroke()
 		context.fill()
 		coordinnateFetch[devicetouch](e)
-		x=coords.x
-		y=coords.y
 	}
 })
 
