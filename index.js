@@ -48,6 +48,10 @@ canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	drawState=true
 })
 
+canvas.addEventListener('touchstart',function(e){
+	console.log('here')
+})
+
 canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 	if(eraserstate==1)
 		{
