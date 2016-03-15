@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Paint</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<script src='./jscolor.js'></script>
+	<div id="header">
+		<div id="sizecontainer" class="options">
+			<div id="sizetext">Select Size</div>
+			<div id="sizechange">
+				<div id="sizecontroller"></div>
+			</div>
+		</div>
+		<div id="erase" class="options">Select Eraser</div>
+		<div id="pencolor" class="options">Select Pen Color:</div>		
+		<input class='jscolor' value="#000000"></input>
+		<div id="backgroundcolor" class="options">Select Background Color</div>
+		<input class="jscolor" value="#ffffff" onchange="backgroundchange()"></input>
+			<div id="clear" class="options">Clear Canvas</div>
+		</div>
+		<div id="fontsize"></div>
+	<canvas id="canvas"></canvas>
+</body>
+<script src="index.js"></script>
+</html>

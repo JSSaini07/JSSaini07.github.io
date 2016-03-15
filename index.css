@@ -1,0 +1,123 @@
+html,body {
+	width:100%;
+	height:100%;
+	margin:0px;
+	overflow: hidden;
+	cursor:url('./pen.png') 15 0, auto;
+}
+
+
+
+#header {
+	width:100%;
+	height:40px;
+	background:black;
+	position: fixed;
+}
+
+#header:hover {
+	cursor:initial;
+}
+
+.options {
+	cursor:pointer;
+}
+
+
+#sizecontainer {
+	display:inline-block;
+	color:white;
+	height: 100%;
+	float:left;
+}
+
+#sizetext {
+	display: inline-block;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	line-height:40px;
+	margin-left:10px;
+}
+
+#sizechange {
+	display: inline-block;
+	width:100px;
+	height:100%;
+	float:left; 
+	background: #3E3E3E;
+	margin-left:10px;
+}
+
+
+#sizecontroller {
+	display: inline-block;
+	float: left;
+	height:40px;
+	width:10px;
+	background: red;
+}
+
+#fontsize {
+	display: inline-block;
+	position:absolute;
+	top:40px;
+	left:89px;
+	width:10px;
+	height: 16px;
+	color:black;
+	font-size:16px;
+	font-weight:bold;
+}
+
+#erase {
+	display: inline-block;
+	height:40px;
+	line-height:40px;
+	background:#3C3C3C;
+	padding-left:10px;
+	padding-right:10px; 
+	margin-left:20px;
+	color:white;
+	float:left;
+}
+
+
+#clear {
+	height:40px;
+	margin-left:20px;
+	display: inline-block;
+	float:left;
+	color:white;
+	line-height:40px;
+}
+
+#pencolor {
+	display: inline-block;
+	margin-left:20px;
+	float:left;
+	padding-left:10px;
+	padding-right: 10px;
+	line-height:40px;
+	height:100%;
+	color:white;
+}
+
+#backgroundcolor {
+	color:white;
+	margin-left:20px;
+	padding-left:10px;
+	padding-right: 10px; 
+	height: 100%;
+	line-height:40px;
+	float:left;
+}
+
+.jscolor {
+	display: inline-block;
+	width:80px;
+	height:36px;
+	padding:0px;
+	float:left;
+	vertical-align: top;
+}
