@@ -37,7 +37,6 @@ function getCoordinatesTouch(e)
 {
 	coords.x=e.changedTouches[0].pageX;
 	coords.y=e.changedTouches[0].pageY;
-	alert("setting "+coords.x+" "+coords.y)
 }
 
 console.log((selectListeners.down)[devicetouch])
