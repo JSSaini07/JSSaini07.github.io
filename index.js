@@ -33,17 +33,16 @@ function getCoordinates(e)
 	coords.y=e.pageY;
 }
 
-function getCoordinatesTouch()
+function getCoordinatesTouch(e)
 {
 	coords.x=e.changedTouches[0].pageX;
 	coords.y=e.changedTouches[0].pageY;
-	console.log("setting "+coords.x+" "+coords.y)
+	alert("setting "+coords.x+" "+coords.y)
 }
 
 console.log((selectListeners.down)[devicetouch])
 
-canvas.addEventListener('touchstart',/*(selectListeners.down)[devicetouch],*/function(e){
-	alert("setted "+e.changedTouches[0].pageX+" "+e.changedTouches[0].pageY);
+canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	(coordinatesFetch[devicetouch])(e)
 	drawState=true
 })
