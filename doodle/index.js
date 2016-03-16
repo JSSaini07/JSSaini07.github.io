@@ -62,6 +62,10 @@ canvas.addEventListener((selectListeners.down)[devicetouch],function(e){
 	drawState=true
 })
 
+canvas.addEventListener('mouseleave',function(){
+	drawState=false
+})
+
 canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 	if(eraserstate==1)
 		{
@@ -86,6 +90,11 @@ canvas.addEventListener((selectListeners.move)[devicetouch],function(e){
 		context.strokeStyle="#"+document.getElementsByClassName('jscolor')[0].value
 		context.lineJoin = 'round';
 		context.miterLimit = 2;
+		if(lineWidth>=4)
+		{
+			console.log('here')
+			context.arc(coords.x,coords.y,0.1,0,2*Math.PI)	
+		}
 		context.lineWidth=lineWidth
 		coordinatesFetch[devicetouch](e)
 		context.lineTo(coords.x,coords.y)
