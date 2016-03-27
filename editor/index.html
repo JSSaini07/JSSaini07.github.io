@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' type='text/css' href='index.css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>Editor</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand">MyEditor</a>
+        </div>
+        <ul class="nav navbar-nav" style="float: right;">
+            <li>
+                <button id='publish' class='btn-success' onclick='publish()'>Publish!</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+<center>
+    <div class='type'>
+        Start Typing      
+    </div>
+    <hr>
+    <div id='menu' class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-primary" onclick='edit("bold",null)'>Bold</button>
+        <button type="button" class="btn btn-primary" onclick='edit("italic",null)'>Italic</button>
+        <button type="button" class="btn btn-primary" onclick='edit("underline",null)'>Underline</button>
+        <button type="button" class="btn btn-primary" onclick='edit("formatBlock","<h3>")'>H1</button>
+        <button type="button" class="btn btn-primary" onclick='edit("formatBlock","<h4>")'>H2</button>
+    </div>
+    <div id="container">
+        <br><br>
+        <div class='editArea' contenteditable="true" data-placeholder="Enter Text Here"></div>
+    </div>
+</center>
+<center>
+</center>
+<script src='index.js'></script>
+</body>
+</html>
