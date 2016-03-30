@@ -1,5 +1,10 @@
 window.addEventListener('keypress', function(ev){
     if(ev.keyCode == '13')
+        if(ev.target.className=='title')
+        {
+            ev.preventDefault();
+            $('.content').focus();
+        }
         document.execCommand('formatBlock', false, 'p');
 }, false);
 
