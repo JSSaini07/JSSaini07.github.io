@@ -24,9 +24,7 @@
        <button class='element bold' onclick='apply("bold",null)'></button>
        <button class='element underline' onclick='apply("underline",null)'></button>
        <button class='element italics' onclick='apply("italic",null)'></button>
-       <button class='element fontIncrease' onclick='apply("formatBlock","<h1>")'></button>
-       <button class='element highlight' onclick='apply("backColor","#000000")'></button>
-       <button class='element fontColor' onclick='apply("foreColor","#D80027")'></button>
+       <button class='element fontColor' onclick='if(document.queryCommandValue("foreColor")=="rgb(99, 99, 99)"){apply("foreColor","#D80027");} else{apply("foreColor","#636363");}'></button>
     </div>
     <div id='inputText'>
         <div class='title' contenteditable='true' data-placeholder="Give your story a Title"></div>

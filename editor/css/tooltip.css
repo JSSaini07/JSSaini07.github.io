@@ -59,18 +59,6 @@ p:hover{
     background-repeat: no-repeat;
 }
 
-.fontIncrease {
-    background:url(../images/fontIncrease.png);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-}
-
-.highlight {
-    background:url(../images/highlight.png);
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-}
-
 .fontColor {
     background:url(../images/fontColor.png);
     background-size: 20px 20px;

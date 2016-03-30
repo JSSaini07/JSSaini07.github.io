@@ -14,6 +14,7 @@ $(document).ready(function(){
 
 function animateContent(){
         sessionStorage.title=document.getElementsByClassName('title')[0].innerHTML;
+        document.title=$('.title').text() || "Editor";
         if($('.title').html()=="")
         {
             $('.content').clearQueue().animate({'marginLeft':'120%'},400,function(){$('.content').css({'display':'none'});});
