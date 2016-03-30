@@ -38,6 +38,11 @@ html,body{
     margin-left:120%;
 }
 
+#clearEditor {
+    display:inline-block;
+    margin-top:6px;
+}
+
 #displayText {
     display:none;
 }

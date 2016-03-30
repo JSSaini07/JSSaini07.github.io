@@ -4,13 +4,6 @@
 
 #preview {
     font-weight:bold;
-    font-size:24px;
-}
-
-#displayTitle {
-    text-align: left;
-}
-
-#displayContent {
+    font-size:20px;
     text-align: left;
 }
