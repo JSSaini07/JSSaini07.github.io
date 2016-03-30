@@ -27,6 +27,8 @@ function checkToolTip() {
     selectedText = window.getSelection().toString();
     if(selectedText != "")
     {
+        sessionStorage.title=document.getElementsByClassName('title')[0].innerHTML;
+        sessionStorage.content=document.getElementsByClassName('content')[0].innerHTML;
         tooltip.style="display:inline-block;"
         textPosition=window.getSelection().getRangeAt(0).getBoundingClientRect(); 
         posX = (textPosition.left+textPosition.right-tooltip.offsetWidth)/2;

@@ -15,6 +15,8 @@
         <a class='navbar-brand' href='#'>Editor</a>
     </div>
     <button id="clearEditor" class='btn btn-danger pull-right' onclick="sessionStorage.clear();location.reload();">Clear Editor</button>
+    <button id="previewButton" class='btn btn-success pull-right' onclick='preview()'>Preview</button>
+    <button id="backToEditor" class='btn btn-primary pull-right' onclick='location.reload()'>Back To Editor</button>
 </nav>
 <br><br>
 <center>
@@ -30,14 +32,23 @@
         <div class='title' contenteditable='true' data-placeholder="Give your story a Title"></div>
         <div class='content' contenteditable='true' data-placeholder='Tell your tale....'></div>
     </div>
-</center>
-<button class='btn btn-primary' id="publish" onclick='preview()'>Publish</button>
-<hr>
+
+    </center>
+    <button class='btn btn-primary' id="publish" onclick='done()'>Done</button>
 <center>
    <div id="displayText">
-       <div id="preview">Links</div>
+       <hr>
+       <div id="linksText">Links</div>
        <div id="links"></div>
    </div>
+</center>
+<center>
+    <div id="preview">
+        <div id="previewText">Preview</div>
+        <hr>
+        <div id="previewTitle">container</div>
+        <div id="previewContent">conteiner</div>
+    </div>
 </center>
 <script src='./javascript/index.js'></script>
 <script src='./javascript/tooltip.js'></script>
