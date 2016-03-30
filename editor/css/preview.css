@@ -1,0 +1,16 @@
+#displayText {
+    width:90%;
+}
+
+#preview {
+    font-weight:bold;
+    font-size:24px;
+}
+
+#displayTitle {
+    text-align: left;
+}
+
+#displayContent {
+    text-align: left;
+}

@@ -2,42 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel='stylesheet' type='text/css' href='index.css'>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <title>Editor</title>
+    <link type='text/css' rel='stylesheet' href='./css/index.css'>
+    <link type='text/css' rel='stylesheet' href='./css/tooltip.css'>
+    <link type='text/css' rel='stylesheet' href='./css/preview.css'>
+    <link type='text/css' rel='stylesheet' href='./css/bootstrap.min.css'>
+    <script src='./jquery/dist/jquery.min.js'></script>
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand">MyEditor</a>
-        </div>
-        <ul class="nav navbar-nav" style="float: right;">
-            <li>
-                <button id='publish' class='btn-success' onclick='publish()'>Publish!</button>
-            </li>
-        </ul>
+<nav class="navbar navbar-default">
+    <div class='navbar-header'>
+        <a class='navbar-brand' href='#'>Editor</a>
     </div>
 </nav>
+<br><br>
 <center>
-    <div class='type'>
-        Start Typing      
+    <div id='tooltip'>
+       <button class='element bold' onclick='apply("bold",null)'></button>
+       <button class='element underline' onclick='apply("underline",null)'></button>
+       <button class='element italics' onclick='apply("italic",null)'></button>
+       <button class='element fontIncrease' onclick='apply("formatBlock","<h1>")'></button>
+       <button class='element highlight' onclick='apply("backColor","#000000")'></button>
+       <button class='element fontColor' onclick='apply("foreColor","#D80027")'></button>
     </div>
-    <hr>
-    <div id='menu' class="btn-group btn-group-lg">
-        <button type="button" class="btn btn-primary" onclick='edit("bold",null)'>Bold</button>
-        <button type="button" class="btn btn-primary" onclick='edit("italic",null)'>Italic</button>
-        <button type="button" class="btn btn-primary" onclick='edit("underline",null)'>Underline</button>
-        <button type="button" class="btn btn-primary" onclick='edit("formatBlock","<h3>")'>H1</button>
-        <button type="button" class="btn btn-primary" onclick='edit("formatBlock","<h4>")'>H2</button>
-    </div>
-    <div id="container">
-        <br><br>
-        <div class='editArea' contenteditable="true" data-placeholder="Enter Text Here"></div>
+    <div id='inputText'>
+        <div class='title' contenteditable='true' data-placeholder="Give your story a Title"></div>
+        <div class='content' contenteditable='true' data-placeholder='Tell your tale....'></div>
     </div>
 </center>
+<button class='btn btn-primary' id="publish" onclick='preview()'>Publish</button>
 <center>
+   <div id="displayText">
+       <div id="preview">Preview</div>
+       <hr>
+       <div id="displayTitle">Title</div>
+       <div id="displayContent">this is the content</div>
+   </div>
 </center>
-<script src='index.js'></script>
+<script src='./javascript/index.js'></script>
+<script src='./javascript/tooltip.js'></script>
+<script src='./javascript/preview.js'></script>
 </body>
 </html>
