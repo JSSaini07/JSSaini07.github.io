@@ -3,7 +3,10 @@ $(document).ready(function(){
     $('.title').html(sessionStorage.title);      // load data into title and
     $('.content').html(sessionStorage.content);  // content fields from sessionStorage 
     $('#backToEditor').hide();                   // initially the back to editor button must be hidden
-    $('#edit').hide(); 
+    $('#edit').hide();   
+    $('#instructions').hide();   
+    $('#hideInstructionButton').hide();
+    $('.animate').removeClass('animate');        // remove animate class which is used to display the replaced text (from api call)
     animateContent();                            // to check if title field is populated then we display content field
     animateDone();                               // to check if content field is populated then we display the done button
     $('.title').on('keyup',animateContent);      // on writting something in title field display content field
@@ -29,7 +32,7 @@ function animateContent(){
             $('.content').animate({'marginLeft':'0%'},400);
             if($('.content').html()!="")
             {
-                $('#done').animate({'marginLeft':'2%'},400);
+                $('#done').animate({'marginLeft':'5%'},400);
             }
         }
 };
@@ -45,6 +48,20 @@ function animateDone(){
         else
         {
              $('#done').css({'display':'inline-block'});
-             $('#done').animate({'marginLeft':'2%'},400);
+             $('#done').animate({'marginLeft':'5%'},400);
         }
 };
+
+function instructions()
+{
+     $('#instructions').slideDown(200); 
+     $('#instructionButton').hide();
+     $('#hideInstructionButton').show();
+}
+
+function hideInstructions()
+{
+    $('#instructions').slideUp(200); 
+    $('#instructionButton').show();
+    $('#hideInstructionButton').hide();
+}

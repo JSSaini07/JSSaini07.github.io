@@ -27,6 +27,10 @@
     opacity:0.6;
 }
 
+#instructionsHeader {
+    font-size: 20px !important;
+}
+
 .bold {
     background:url(../images/bold.png);
     background-size: 20px 20px;

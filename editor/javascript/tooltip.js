@@ -13,6 +13,7 @@ inputText.addEventListener('keypress', function(ev){
         {
             ev.preventDefault();
             $('.content').focus();
+            
         }
         else
         {
@@ -42,7 +43,7 @@ function addHoverProperty()
     });
 }
 
-function updateParagraphPositions()
+function updateParagraphPositions()  // position of paragraphs in array of objects
 {
     paragraphPositions=[{}]
     paragraphs = document.getElementsByTagName('p');
@@ -56,8 +57,8 @@ function updateParagraphPositions()
     }
 }
 
-function attachListener()
-{
+function attachListener()           // once done is pressed we call attachListener() which makes the tile and content divs uneditable and     
+{                                   // paragraphs draggable
     inputText.setAttribute("onselectstart","return false");
     updateParagraphPositions();
     $(document).ready(function(){
@@ -78,14 +79,14 @@ function attachListener()
             drag=-1;
         })
         $('p').on('mousemove',function(ev){
-            if(drag==1)
+            if(drag==1) 
             {
                 if(source==null||flag==1)
                 {
                     source=ev.target;
                     flag=-1;
                 }
-                for(i=1;i<paragraphPositions.length-1;i++)
+                for(i=1;i<paragraphPositions.length-1;i++) // loop over every paragraph to find if it overlaps
                 {
                     if(ev.pageY>=paragraphPositions[i].top&&ev.pageY<=paragraphPositions[i].top+paragraphPositions[i].height)
                     {
@@ -109,24 +110,6 @@ function attachListener()
 function apply(action,argument) {
     document.execCommand(action,false,argument);
 }
-
-/*$(document).ready(function(){
-        inputText.addEventListener('paste',function(ev){ // to avoid creating spans on pasting
-        ev.preventDefault();
-        text = ev.clipboardData.getData("text/plain");
-        document.execCommand("insertHTML", false, text);
-    })
-    inputText.addEventListener('drag',function(){   
-        $('#tooltip').hide();
-        
-    })
-    inputText.addEventListener('drop',function(){
-         $(document).on('DOMNodeInserted',function(){  // wait untill span is inserted to the document
-             $('span').replaceWith(function(){return $("<p>").append($(this).contents());});
-         })
-    })
-});*/
-
 
 /* checkToolTip runs every time mouse moves or a key presses in the inputText div, it checks if some 
    text is selected and if it results to true it displays and positions the tooltip */

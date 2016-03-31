@@ -3,6 +3,7 @@
 // setPreview() updates the data in preview divs i.e. sets the previewTitle and previewContent 
 
 function done() {
+    document.execCommand('formatBlock',false,'p');
     attachListener();
     setPreview(); // update preview data
     $('#displayText').slideDown(200,function(){$(window).scrollTop(displayText.offsetTop);}); // show the links div
@@ -31,6 +32,7 @@ function done() {
 // preview() is called on clicking the previewButton
 
 function preview() {
+    document.execCommand('formatBlock',false,'p');
     $(document).ready(function(){
         setPreview(); // update preview data
         // hide all other divs and buttons
@@ -38,6 +40,7 @@ function preview() {
         $('#previewButton').hide();
         $('#done').hide();
         $('#edit').hide();
+        $('#replace').hide();
         
         // show backToEditor button
         $('#backToEditor').show();

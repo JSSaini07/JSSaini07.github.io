@@ -10,6 +10,31 @@
     <script src='./jquery/dist/jquery.min.js'></script>
 </head>
 <body>
+<div id="loading">Please Wait</div>
+<div id="instructions">
+<center>
+    <div id="instructionsHeader"><kbd><span>Instructions</span></kbd></div>
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-body">Each <code>Enter</code> creates a <code>new paragraph</code>.</div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">Select some text using mouse, keyboard or double click on a word and a <code>tooltip</code> will show up.</div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">To rearrange the paragraphs, click on Done button and just <code>drag the paragraphs</code>.</div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">Links can be created using <code>anchor tags</code>.These links will be displayed on clicking Done Button in <code>alternating red and blue colors</code>.</div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-body">To replace all the four letter words present, click the <code>replace button</code> in the navigation bar.To distinguish the replaced words you can hover over them and their background color changes.</div>
+    </div>
+     <div class="panel panel-default">
+         <div class="panel-body">The <code>content is saved</code> as the user types and will be available even after reload.To clear the editor Clear Button in the navigation bar can be used.</div>
+    </div>
+</center>
+</div>
 <nav class="navbar navbar-default">
     <div class='navbar-header'>
         <a class='navbar-brand' href='#'>Editor</a>
@@ -17,7 +42,9 @@
     <button id="clearEditor" class='btn btn-danger pull-right' onclick="sessionStorage.clear();location.reload();">Clear Editor</button>
     <button id="previewButton" class='btn btn-success pull-right' onclick='preview()'>Preview</button>
     <button id="backToEditor" class='btn btn-primary pull-right' onclick='location.reload()'>Back To Editor</button>
-    <button id="replace" class='btn btn-info pull-right' onclick='convert()'>Replace digits with length 4 </button>
+    <button id="replace" class='btn btn-warning pull-right' onclick='convert()'>Replace digits with length 4</button>
+    <button id="instructionButton" class='btn btn-info pull-right' onclick='instructions()'>Instructions</button>
+    <button id="hideInstructionButton" class='btn btn-info pull-right' onclick='hideInstructions()'>Hide Instructions</button>
 </nav>
 <br><br>
 <center>
