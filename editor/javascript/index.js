@@ -29,7 +29,7 @@ function animateContent(){
             $('.content').animate({'marginLeft':'0%'},400);
             if($('.content').html()!="")
             {
-                $('#done').animate({'marginLeft':'5%'},400);
+                $('#done').animate({'marginLeft':'2%'},400);
             }
         }
 };
@@ -45,6 +45,6 @@ function animateDone(){
         else
         {
              $('#done').css({'display':'inline-block'});
-             $('#done').animate({'marginLeft':'5%'},400);
+             $('#done').animate({'marginLeft':'2%'},400);
         }
 };
