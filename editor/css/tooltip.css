@@ -33,19 +33,6 @@
     background-repeat: no-repeat;
 }
 
-p:hover{
-    animation: changeBackground 2s;
-}
-
-@keyframes changeBackground {
-    from{
-        background:#f2e0d3;
-    }
-    to {
-        background:white;
-    }
-}
-
 
 .underline {
     background:url(../images/underline.png);

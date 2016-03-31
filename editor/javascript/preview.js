@@ -1,10 +1,13 @@
 
+// done() is called on clicking the done button, it shows the links
+// setPreview() updates the data in preview divs i.e. sets the previewTitle and previewContent 
 
 function done() {
-    setPreview();
-    $('#displayText').slideDown(600);
-    links = $('#previewContent').find('a');
-    if(links.length==0)
+    attachListener();
+    setPreview(); // update preview data
+    $('#displayText').slideDown(200,function(){$(window).scrollTop(displayText.offsetTop);}); // show the links div
+    links = $('#previewContent').find('a'); // search for links and store them in links variable
+    if(links.length==0) // if no links present 
     {
         $('#links').text('No Links Inserted');        
     }
@@ -14,24 +17,32 @@ function done() {
         
         for(i=0;i<links.length;i++)
         {
-            color="#dc2c3e";
-            if(i%2==0)
+            color="#dc2c3e"; // red color
+            if(i%2==0) // alternating logic
             {
-                color = "#248de9";
+                color = "#248de9"; // blue color
             }
-            str = str+"<p><a href='"+links[i].innerHTML+"' style='color:"+color+"'>"+links[i].innerHTML+"</a></p>";
+            str = str+"<p><a href='"+links[i].innerHTML+"' style='color:"+color+"'>"+links[i].innerHTML+"</a></p>"; // formatting each link and appending it to str
         }
-        $('#links').html(str);
+        $('#links').html(str); //set the html of links div so that it shows the divs
     }
 };
 
+// preview() is called on clicking the previewButton
+
 function preview() {
     $(document).ready(function(){
-        setPreview();
-        $('#clearEditor').hide();
+        setPreview(); // update preview data
+        // hide all other divs and buttons
+        $('#clearEditor').hide(); 
         $('#previewButton').hide();
+        $('#done').hide();
+        $('#edit').hide();
+        
+        // show backToEditor button
         $('#backToEditor').show();
-        $('#publish').hide();
+        
+        // hiding animation,first display text slides up then callbacks slideup on inputText which callbacks on preview to slideDown
         $('#displayText').slideUp(400,function(){$('#inputText').slideUp(400,function(){$('#preview').slideDown(600);});});
 })};
 

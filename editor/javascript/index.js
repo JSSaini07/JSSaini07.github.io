@@ -1,24 +1,27 @@
 
 $(document).ready(function(){
-    $('.title').html(sessionStorage.title);
-    $('.content').html(sessionStorage.content);
-    $('#backToEditor').hide();
-    animateContent();
-    animatePublish();
-    $('.title').on('keyup',animateContent);   // to show contentPanel only when title is not empty 
-    $('.content').on('keyup',animatePublish); // to show publish button only when content is not empty
+    $('.title').html(sessionStorage.title);      // load data into title and
+    $('.content').html(sessionStorage.content);  // content fields from sessionStorage 
+    $('#backToEditor').hide();                   // initially the back to editor button must be hidden
+    $('#edit').hide(); 
+    animateContent();                            // to check if title field is populated then we display content field
+    animateDone();                               // to check if content field is populated then we display the done button
+    $('.title').on('keyup',animateContent);      // on writting something in title field display content field
+    $('.content').on('keyup',animateDone);       // on writing something in content field display the done button
 })
 
 
 // animateContent runs on every keyPress in title div and if title div is not empty it displays content panel
 
 function animateContent(){
-        sessionStorage.title=document.getElementsByClassName('title')[0].innerHTML;
-        document.title=$('.title').text() || "Editor";
-        if($('.title').html()=="")
+        sessionStorage.title=document.getElementsByClassName('title')[0].innerHTML; //update the sessionStorage on every keyPress (save the data)
+        document.title=$('.title').text() || "Editor";  // Dynamically change the title of page 
+        // if title becomes empty hide contentPanel and done button.
+        // clearQueue is used to empty the jquery function queue
+        if($('.title').html()=="")  
         {
             $('.content').clearQueue().animate({'marginLeft':'120%'},400,function(){$('.content').css({'display':'none'});});
-            $('#publish').clearQueue().animate({'marginLeft':'120%'},400,function(){$('.publish').css({'display':'none'});});
+            $('#done').clearQueue().animate({'marginLeft':'120%'},400,function(){$('#done').css({'display':'none'});});
         }
         else
         {
@@ -26,22 +29,22 @@ function animateContent(){
             $('.content').animate({'marginLeft':'0%'},400);
             if($('.content').html()!="")
             {
-                $('#publish').animate({'marginLeft':'5%'},400);
+                $('#done').animate({'marginLeft':'5%'},400);
             }
         }
 };
 
-// animatePublish runs on every keyPress in content div and if content div is not empty it displays publish button
+// animateDone runs on every keyPress in content div and if content div is not empty it displays done button
 
-function animatePublish(){
+function animateDone(){
         sessionStorage.content=document.getElementsByClassName('content')[0].innerHTML
         if($('.content').html()=="")
         {
-            $('#publish').clearQueue().animate({'marginLeft':'120%'},400,function(){$('#publish').css({'display':'none'});});
+            $('#done').clearQueue().animate({'marginLeft':'120%'},400,function(){$('#done').css({'display':'none'});});
         }
         else
         {
-             $('#publish').css({'display':'inline-block'});
-             $('#publish').animate({'marginLeft':'5%'},400);
+             $('#done').css({'display':'inline-block'});
+             $('#done').animate({'marginLeft':'5%'},400);
         }
 };
