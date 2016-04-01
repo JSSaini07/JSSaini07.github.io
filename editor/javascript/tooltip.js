@@ -39,7 +39,7 @@ function addHoverProperty()
                 })
         $('p').on('mouseout',function(){
                     this.style="background:white";
-                })
+                })z
     });
 }
 
