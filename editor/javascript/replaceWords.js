@@ -98,7 +98,7 @@ function removeSpaceOnTags()
 }
 
 function updateContent()
-{zzz
+{
     k=0;
     for(i=0;i<paragraphs.length;i++)
     {
