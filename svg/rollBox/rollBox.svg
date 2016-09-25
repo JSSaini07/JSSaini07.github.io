@@ -1,0 +1,193 @@
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="241mm"
+   height="224mm"
+   viewBox="0 0 853.9371 793.70071"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="rollBox.svg">
+  <defs id="defs4">
+    <style>
+        .outer {
+          transform-origin: 50% 50%;
+          animation:rotateOuter 4s infinite;
+          animation-timing-function: linear; 
+        }
+        .inner {
+          transform-origin: 50% 50%;
+          animation:rotateInner 2s infinite;
+          animation-timing-function: linear; 
+        }
+        .outerBall { 
+          transform-origin: 50% 50%;
+          animation:moveOuterBall 4s infinite;
+          animation-timing-function: linear; 
+        }
+        .innerBall {
+          transform-origin: 50% 50%;
+          animation:moveInnerBall 2s infinite;
+          animation-timing-function: linear; 
+        }
+      @keyframes rotateOuter {
+        12.5% {
+          transform:rotateZ(90deg);
+        }
+        25% {
+          transform:rotateZ(90deg);
+        }
+        37.5% {
+          transform:rotateZ(180deg);
+        }
+        50% {
+          transform:rotateZ(180deg);
+        }
+        62.5% {
+          transform:rotateZ(270deg);
+        }
+        75% {
+          transform:rotateZ(270deg);
+        }
+        87.5% {
+          transform:rotateZ(360deg);
+        }
+        100% {
+          transform:rotateZ(360deg);
+        }
+      }
+      @keyframes rotateInner {
+        12.5% {
+          transform:rotateZ(-90deg);
+        }
+        25% {
+          transform:rotateZ(-90deg);
+        }
+        37.5% {
+          transform:rotateZ(-180deg);
+        }
+        50% {
+          transform:rotateZ(-180deg);
+        }
+        62.5% {
+          transform:rotateZ(-270deg);
+        }
+        75% {
+          transform:rotateZ(-270deg);
+        }
+        87.5% {
+          transform:rotateZ(-360deg);
+        }
+        100% {
+          transform:rotateZ(-360deg);
+        }
+      }
+      @keyframes moveOuterBall {
+        12.5% {
+          transform:translateX(0%);
+        }
+        25% {
+          transform:translateX(900%);
+        }
+        37.5% {
+          transform:translateX(900%);
+        }
+        50% {
+          transform:translateX(900%) translateY(-740%);
+        }
+        62.5% {
+          transform:translateX(900%) translateY(-740%);
+        }
+        75% {
+          transform:translateX(0%) translateY(-740%);
+        }
+        87.5% {
+          transform:translateX(0%) translateY(-740%);
+        }
+        100% {
+          transform:translateX(0%) translateY(0%);
+        }
+      }
+      @keyframes moveInnerBall {
+        12.5% {
+          transform:translateX(0%);
+        }
+        25% {
+          transform:translateX(-530%);
+        }
+        37.5% {
+          transform:translateX(-530%);
+        }
+        50% {
+          transform:translateX(-530%) translateY(-414%);
+        }
+        62.5% {
+          transform:translateX(-530%) translateY(-414%);
+        }
+        75% {
+          transform:translateX(0%) translateY(-414%);
+        }
+        87.5% {
+          transform:translateX(0%) translateY(-414%);
+        }
+        100% {
+          transform:translateX(0%) translateY(0%);
+        }
+      }
+    </style>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-258.66155)">
+     <g class='outer'>
+      <rect class='outerRect'
+         style="opacity:1;fill:none;fill-opacity:1;fill-rule:nonzero;stroke:#427fd7;stroke-width:58.5;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect3336"
+         width="525.2793"
+         height="499.01535"
+         x="161.62442"
+         y="409.90521" />
+       <path class='outerBall'
+         style="opacity:1;fill:#000000;fill-opacity:0.71573606;fill-rule:nonzero"
+         id="path4202"
+         sodipodi:type="arc"
+         sodipodi:cx="227.28435"
+         sodipodi:cy="842.25043"
+         sodipodi:rx="21.213203"
+         sodipodi:ry="24.24366"
+         sodipodi:start="6.2613861"
+         sodipodi:end="6.2342986"
+         sodipodi:open="true"
+         d="m 248.49251,841.72198 a 21.213203,24.24366 0 0 1 -20.60216,24.76221 21.213203,24.24366 0 0 1 -21.80596,-23.3771 21.213203,24.24366 0 0 1 20.30683,-25.07883 21.213203,24.24366 0 0 1 22.08099,23.03745" />
+     </g>
+     <g class='inner'>
+        <rect class='innerRect'
+           style="opacity:1;fill:#f9f9f9;fill-opacity:0;fill-rule:nonzero;stroke:#ff553e;stroke-width:26.37800026;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+           id="rect3336-6"
+           width="242.23366"
+           height="220.0103"
+           x="313.24878"
+           y="546.37726" />
+        <path class='innerBall'
+           style="opacity:1;fill:#000000;fill-opacity:0.71764706;fill-rule:nonzero"
+           id="path4202-3"
+           sodipodi:type="arc"
+           sodipodi:cx="519.21838"
+           sodipodi:cy="729.11334"
+           sodipodi:rx="15.152287"
+           sodipodi:ry="17.172592"
+           sodipodi:start="6.2613861"
+           sodipodi:end="6.2342986"
+           sodipodi:open="true"
+           d="m 534.36707,728.73902 a 15.152287,17.172592 0 0 1 -14.71583,17.53991 15.152287,17.172592 0 0 1 -15.57568,-16.55878 15.152287,17.172592 0 0 1 14.50488,-17.76417 15.152287,17.172592 0 0 1 15.77213,16.31819" />
+      </g>
+  </g>
+</svg>
