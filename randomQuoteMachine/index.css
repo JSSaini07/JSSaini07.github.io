@@ -1,0 +1,58 @@
+html,body {
+	width:100%;
+	height:100vh;
+	margin:0px;
+	overflow-y: hidden;
+}
+
+#canvas {
+	width:100%;
+	height:100vh;
+}
+
+.quoteContainer {
+	position: absolute;
+	top:0px;
+	left:28%;
+	display: none;
+	font-size:20px;
+	padding:20px;
+	width:44%;
+	border-radius:4px;
+	background:url('http://65.media.tumblr.com/d74bcf6919e5c06b18dc6c455472d4e5/tumblr_ob59dqW3YR1u5ybpvo1_1280.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.quoteText {
+	font-family:Simonetta;
+	font-size:30px;
+}
+
+.quoteAuthor {
+	float:right;
+	font-family: Handlee;
+	font-weight:bold;
+}
+
+.name {
+	float:right;
+}
+	
+.dash {
+	float:left;
+	margin-top:13px;
+	background:#C2C2C2;
+	width:46px;
+	height:3px;
+}
+
+.tweet {
+	float:left;
+	cursor:pointer;
+}
+
+.next {
+	float:right;
+	cursor:pointer;
+}

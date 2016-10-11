@@ -1,0 +1,26 @@
+
+.svgContainer {
+	display: inline-block;
+	vertical-align: top;
+	width:400px;
+	cursor:pointer;
+	margin-top:20px;
+	margin-bottom:20px;
+	transition:background 1s;
+}
+
+.svgContainer:hover {
+	background:#EDEDED;
+}
+
+.svgImage {
+	width:300px;
+	height:160px;
+}
+
+.svgName {
+	padding:10px;
+	font-weight:bold;
+	font-family:Nova Flat;
+}
+
