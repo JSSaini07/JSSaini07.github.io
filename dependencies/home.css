@@ -24,7 +24,22 @@ a:link,a:visited {
 }
 
 @media screen and (max-width:650px) {
-	.home {
+	.home,.projects,.svg {
 		width:80%;
+	}
+}
+
+@media screen and (max-width:550px) {
+	.home,.projects,.svg {
+		width:100%;
+	}
+	.headerName {
+		display: none;
+	}
+	.headerOptions {
+		float:left;
+	}
+	.option {
+		font-size:14px;
 	}
 }
