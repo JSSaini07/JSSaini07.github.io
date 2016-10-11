@@ -7,6 +7,7 @@
 	padding:20px;
 	border-radius: 6px;
 	color:white;
+	font-family:Noto Serif;
 }
 
 a:link,a:visited {
@@ -15,6 +16,11 @@ a:link,a:visited {
 
 .connectElement {
 	padding:10px;
+	transition:color 0.4s;
+}
+
+.connectElement:hover {
+	color:#008AFF;
 }
 
 @media screen and (max-width:650px) {
