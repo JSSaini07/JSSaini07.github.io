@@ -64,7 +64,7 @@ var EventAdder=React.createClass({
 
 var Board=React.createClass({
 	getInitialState:function() {
-		var events=['hello','there'];
+		var events=[];
 		var completed=[true,false];
 		return {events:events,completed:completed};
 	},
