@@ -19,9 +19,10 @@ html,body {
 .board {
 	width:80%;
 	background:#F3F3F3;
+	padding:20px;
 }
 
-.addEvent{
+.eventInput{
 	margin-top:40px;	
 	width:40%;
 	background:none;
@@ -44,10 +45,47 @@ html,body {
 	cursor:pointer;
 }
 
+.eventBox{
+	margin-top:20px;
+	background: #F8F8F8;
+}
+
 .emptyTask{
 	display: inline-block;
 	margin-top:40px;
 	font-size:26px;
 	font-family:Reem Kufi;
 	color:#8C8C8C;
+}
+
+.eventText{
+	display:inline-block;
+	width:80%;
+	font-size:30px;
+	font-family: Reem Kufi;
+}
+
+.completed {
+	color:#D6D5D5;
+}
+
+.eventCompletedContainer,.eventRemoveContainer {	
+	display: inline-block;
+	width:3%;
+	margin-left:10px;
+}
+
+.completedEvent,.deleteEvent {
+	display:none;
+	color:#D6D5D5;
+	cursor:pointer;	
+	margin-left:20px;
+}
+
+.eventBox:hover .completedEvent{
+	display:inline-block;
+}
+
+.eventBox:hover .deleteEvent{
+	display:inline-block;
 }
