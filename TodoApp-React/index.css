@@ -11,15 +11,16 @@ html,body {
 	font-size:40px;
 	text-align:center;
 	line-height:80px;
-	background:#FEC63F;
+	background:#F41E2D;
 	font-family:Molle;
-	border-bottom:2px solid #393939;
+	border-bottom:2px solid #2F65FE;
 }
 
 .board {
 	width:80%;
-	background:#F3F3F3;
+	min-height:70vh;
 	padding:20px;
+	background:#F5F5F5;
 }
 
 .eventInput{
@@ -28,7 +29,7 @@ html,body {
 	background:none;
 	border:0px;
 	outline-width:0px;
-	border-bottom:1px solid #5C5C5C;
+	border-bottom:2px solid #5C5C5C;
 	font-family: Reem Kufi;
 	font-size: 20px;
 	text-align: center;
@@ -36,13 +37,18 @@ html,body {
 
 .addEventButton {
 	display:inline-block;
-	background:#5D93E4;
+	border:2px solid #2F65FE;
 	padding:8px;
 	border-radius: 6px;
 	font-weight:bold;
 	font-family: Reem Kufi;
 	margin-left:20px;	
 	cursor:pointer;
+	transition:background 0.2s;
+}
+
+.addEventButton:hover {
+	background: #2F65FE;
 }
 
 .eventBox{
@@ -88,4 +94,24 @@ html,body {
 
 .eventBox:hover .deleteEvent{
 	display:inline-block;
+}
+
+.copyright {
+	margin-top:24px;
+}
+
+.name {
+	display: inline-block;
+	background:#262626;
+	color:white;
+	border-radius:10px;
+	font-size:14px;
+	font-family:Molle;
+	padding:4px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
+.heart {
+	color:#FF0825;
 }

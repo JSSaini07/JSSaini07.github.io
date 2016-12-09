@@ -43,7 +43,7 @@ var Event=React.createClass({
 });
 
 var EventAdder=React.createClass({
-	addEvent:function(){this.props.addEvent(this.refs.eventInput.value)},
+	addEvent:function(){if(this.refs.eventInput.value.length!=0){this.props.addEvent(this.refs.eventInput.value)}},
 	render:function(){
 		return (
 			<div>
@@ -88,7 +88,7 @@ var Board=React.createClass({
 		this.setState({events:this.state.events,completed:temp});
 	},
 	renderEmpty:function(){
-		return <div className="emptyTask"> No Task Added :( </div>
+		return <div className="emptyTask"> No Task Added <span className='fa fa-frown-o'></span> </div>
 	},
 	renderNormal:function(){
 		var tempref=this;
