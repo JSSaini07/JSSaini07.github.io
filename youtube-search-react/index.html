@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<link href="https://fonts.googleapis.com/css?family=Aref+Ruqaa" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="index.css"></link>
+	<title>YoutubeSearch-React</title>
+</head>
+<body>
+<center>
+	<div id="app"></div>
+</center>
+</body>
+<script>
+function init(){
+	gapi.client.setApiKey("AIzaSyDCdn3-nDNWR_PsYLmYG3qUUt-5ycUvHxk");
+	gapi.client.load("youtube","v3",function(){
+		console.log("API ready");
+	});
+}
+</script>
+<script src="https://apis.google.com/js/client.js?onload=init"></script>
+<script src="app.js"></script>
+</html>
