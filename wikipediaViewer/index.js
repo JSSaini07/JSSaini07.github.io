@@ -14,7 +14,7 @@ function fetchContent(query) {
 	}catch(e){}
 	$('.tab').remove();
 	$.ajax({
-		'url':'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch='+query,
+		'url':'http://crossorigin.me/https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch='+query,
 		'method':'GET',
 		'success':function(r){
 			r=r.query.pages;

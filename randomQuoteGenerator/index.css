@@ -16,12 +16,17 @@ html,body {
 	left:28%;
 	display: none;
 	font-size:20px;
-	padding:20px;
 	width:44%;
 	border-radius:4px;
-	background:url('http://65.media.tumblr.com/d74bcf6919e5c06b18dc6c455472d4e5/tumblr_ob59dqW3YR1u5ybpvo1_1280.jpg');
+	background:url('background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+
+.content {
+	padding:20px;
+	display: inline-block;
+	background: rgba(0,0,0,0.9);
 }
 
 .quoteText {

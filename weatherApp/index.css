@@ -11,3 +11,9 @@ html,body {
 table {
 	width:90% !important;
 }
+
+.units {
+	text-decoration: underline;
+	font-weight: bold;
+	cursor:pointer;
+}
