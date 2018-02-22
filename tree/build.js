@@ -1000,17 +1000,35 @@ var _MyContainer2 = _interopRequireDefault(_MyContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var inputTreeData = [{ "key": 1, "name": "Stella Payne Diaz", "title": "CEO" }, { "key": 2, "name": "Luke Warm", "title": "VP Marketing/Sales", "parent": 1 }, { "key": 3, "name": "Meg Meehan Hoffa", "title": "Sales", "parent": 2 }, { "key": 4, "name": "Peggy Flaming", "title": "VP Engineering", "parent": 1 }, { "key": 5, "name": "Saul Wellingood", "title": "Manufacturing", "parent": 4 }, { "key": 6, "name": "Al Ligori", "title": "Marketing", "parent": 2 }, { "key": 7, "name": "Dot Stubadd", "title": "Sales Rep", "parent": 3 }, { "key": 8, "name": "Les Ismore", "title": "Project Mgr", "parent": 5 }, { "key": 9, "name": "April Lynn Parris", "title": "Events Mgr", "parent": 6 }, { "key": 10, "name": "Xavier Breath", "title": "Engineering", "parent": 4 }, { "key": 11, "name": "Anita Hammer", "title": "Process", "parent": 5 }, { "key": 12, "name": "Billy Aiken", "title": "Software", "parent": 10 }, { "key": 13, "name": "Stan Wellback", "title": "Testing", "parent": 10 }, { "key": 14, "name": "Marge Innovera", "title": "Hardware", "parent": 10 }, { "key": 15, "name": "Evan Elpus", "title": "Quality", "parent": 5 }, { "key": 16, "name": "Lotta B. Essen", "title": "Sales Rep", "parent": 3 }];
+document.getElementById('inputTree').value = '[ {"key":1, "name":"Stella Payne Diaz", "title":"CEO"},\n{"key":2, "name":"Luke Warm", "title":"VP Marketing/Sales", "parent":1},\n{"key":3, "name":"Meg Meehan Hoffa", "title":"Sales", "parent":2},\n{"key":4, "name":"Peggy Flaming", "title":"VP Engineering", "parent":1},\n{"key":5, "name":"Saul Wellingood", "title":"Manufacturing", "parent":4},\n{"key":6, "name":"Al Ligori", "title":"Marketing", "parent":2},\n{"key":7, "name":"Dot Stubadd", "title":"Sales Rep", "parent":3},\n{"key":8, "name":"Les Ismore", "title":"Project Mgr", "parent":5},\n{"key":9, "name":"April Lynn Parris", "title":"Events Mgr", "parent":6},\n{"key":10, "name":"Xavier Breath", "title":"Engineering", "parent":4},\n{"key":11, "name":"Anita Hammer", "title":"Process", "parent":5},\n{"key":12, "name":"Billy Aiken", "title":"Software", "parent":10},\n{"key":13, "name":"Stan Wellback", "title":"Testing", "parent":10},\n{"key":14, "name":"Marge Innovera", "title":"Hardware", "parent":10},\n{"key":15, "name":"Evan Elpus", "title":"Quality", "parent":5},\n{"key":16, "name":"Lotta B. Essen", "title":"Sales Rep", "parent":3}]';
+
+var inputTreeData = null;
+
+var node = null;
 
 document.getElementById('submitTree').addEventListener('click', function () {
-  //inputTreeData = document.getElementById('inputTree').value;
+  if (node) {
+    _reactDom2.default.unmountComponentAtNode(document.getElementById('app'));
+  }
+  inputTreeData = JSON.parse(document.getElementById('inputTree').value || '{}') || placeholerInputTreeData;
   renderTree();
 });
 
 function renderTree() {
+  var children = {};
+  for (var i = 0; i < inputTreeData.length; i++) {
+    if (inputTreeData[i].parent) {
+      if (children[inputTreeData[i].parent] != undefined) {
+        children[inputTreeData[i].parent]++;
+      } else {
+        children[inputTreeData[i].parent] = 1;
+      }
+    }
+  }
+  console.log(children);
   for (var i = 0; i < inputTreeData.length; i++) {
     var t = inputTreeData[i];
-    _reactDom2.default.render(_react2.default.createElement(_MyContainer2.default, { key: t.key, name: t.name, title: t.title, parent: t.parent }), document.getElementById('app'));
+    node = _reactDom2.default.render(_react2.default.createElement(_MyContainer2.default, { id: t.key, name: t.name, title: t.title, parent: t.parent, children: children[t.parent] }), document.getElementById('app'));
   }
 }
 
@@ -18312,38 +18330,119 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var MyContainer = function (_React$Component) {
   _inherits(MyContainer, _React$Component);
 
-  function MyContainer() {
+  function MyContainer(props) {
     _classCallCheck(this, MyContainer);
 
-    return _possibleConstructorReturn(this, (MyContainer.__proto__ || Object.getPrototypeOf(MyContainer)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (MyContainer.__proto__ || Object.getPrototypeOf(MyContainer)).call(this, props));
+
+    _this.resetMouseState = _this.resetMouseState.bind(_this);
+    _this.moveLines = _this.moveLines.bind(_this);
+    _this.findFarthest = _this.findFarthest.bind(_this);
+    return _this;
   }
 
   _createClass(MyContainer, [{
+    key: 'resetMouseState',
+    value: function resetMouseState() {
+      var elements = document.querySelectorAll('g');
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].setAttribute('dragState', 0);
+      }
+    }
+  }, {
+    key: 'moveLines',
+    value: function moveLines(g) {
+      var state = parseInt(g.getAttribute("dragState"));
+      if (state) {
+        var x = event.offsetX;
+        var y = event.offsetY;
+        var offsetX = parseInt(d3.select(g).attr("width")) / 2;
+        var offsetY = parseInt(d3.select(g).attr("height")) / 2;
+        g.setAttribute("transform", "translate(" + (x - offsetX) + ',' + (y - offsetY) + ')');
+        var sourceLines = document.querySelectorAll('line[source="' + g.getAttribute('boxId') + '"]');
+        var destinationLines = document.querySelectorAll('line[destination="' + g.getAttribute('boxId') + '"]');
+        for (var i = 0; i < sourceLines.length; i++) {
+          var line = sourceLines[i];
+          line.setAttribute("x2", x - offsetX);
+          line.setAttribute("y2", y - offsetY);
+        }
+        for (var i = 0; i < destinationLines.length; i++) {
+          var line = destinationLines[i];
+          line.setAttribute("x1", x - offsetX);
+          line.setAttribute("y1", y - offsetY);
+        }
+      }
+    }
+  }, {
+    key: 'findFarthest',
+    value: function findFarthest() {
+      var farthestX = 0,
+          farthestY = 0;
+      var elements = document.querySelectorAll('g');
+      for (var i = 0; i < elements.length; i++) {
+        var box = elements[i].getClientRects()[0];
+        if (box.x > farthestX) {
+          farthestX = box.x;
+        }
+        if (box.y > farthestY) {
+          farthestY = box.y;
+        }
+      }
+      document.getElementById('app').setAttribute('width', farthestX + 200);
+      document.getElementById('app').setAttribute('height', farthestY + 200);
+    }
+  }, {
     key: 'render',
     value: function render() {
       var ref = this;
-      var rectangleWidth = 200;
-      var rectangleHeigth = 100;
-      var containerWidth = 1920;
-
+      var rectangleWidth = 200,
+          rectangleHeight = 100;
       var svgContainer = d3.select("body").select("svg");
-
-      var g = svgContainer.append("g").attr("width", 110).attr("height", 110).attr("transform", function () {
-        var parent = ref.props.parent;
-        var x = 0,
-            y = 0;
+      var x = 0,
+          y = 0,
+          parentX = 0,
+          parentY = 0,
+          parent = ref.props.parent;
+      var g = svgContainer.append("g").attr("width", 110).attr("height", 110).attr("boxId", ref.props.id).attr("childOf", ref.props.parent).attr("dragState", "0").attr("transform", function () {
         if (parent == undefined) {
-          y = 0;x = (containerWidth - rectangleWidth) / 2;
+          y = 0;x = (1920 - rectangleWidth) / 2;
+        } else {
+          var parentElement = document.querySelectorAll('g[boxId="' + parent + '"]')[0].getClientRects()[0];
+          var childNumber = document.querySelectorAll('g[childOf="' + parent + '"]').length - 1;
+          var totalChildren = ref.props.children;
+          var marginX = parseInt((1920 - totalChildren * rectangleWidth) / totalChildren);
+          if (marginX <= 0) {
+            marginX = 40;
+          }
+          x = childNumber * (parentElement.width + marginX);
+          y = parentElement.y + parentElement.height + 40;
+          parentX = parentElement.x;
+          parentY = parentElement.y;
+          if (x == 0) {
+            x = 40;
+          }
+          if (y == 0) {
+            y = 40;
+          }
         }
-
         return "translate(" + x + "," + y + ")";
       });
-
-      var rectangle = g.append("rect").attr("width", rectangleWidth).attr("height", rectangleHeigth).attr("stroke", "black").attr("fill", "white");
-
-      g.append("text").attr('fill', 'black').attr('dy', rectangleHeigth / 2).text('Name: ' + this.props.name);
-      g.append("text").attr('fill', 'black').attr('dy', rectangleHeigth / 2 + 20).text('Title: ' + this.props.title);
-
+      var rectangle = g.append("rect").attr("width", rectangleWidth).attr("height", rectangleHeight).attr("stroke", "black").attr("fill", "#3d7fba").attr("stroke", "#a0a0a0");
+      if (parent) {
+        var line = svgContainer.append("line").attr("x1", x).attr("y1", y).attr("x2", parentX).attr("y2", parentY + 92).attr("source", parent).attr("destination", ref.props.id).attr('stroke-width', 2).attr("stroke", "red");
+      }
+      g.append("text").attr('fill', 'black').attr('dy', rectangleHeight / 2).text('Name: ' + this.props.name).attr("fill", "white").attr("font-weight", "bold");
+      g.append("text").attr('fill', 'black').attr('dy', rectangleHeight / 2 + 20).text('Title: ' + this.props.title).attr("fill", "white").attr("font-weight", "bold");
+      g.nodes()[0].addEventListener('mousedown', function () {
+        this.setAttribute("dragState", 1);
+      });
+      document.addEventListener('mouseup', function () {
+        ref.resetMouseState();
+      });
+      g.nodes()[0].addEventListener('mousemove', function () {
+        ref.moveLines(this);
+      });
+      ref.findFarthest();
       return '';
     }
   }]);
