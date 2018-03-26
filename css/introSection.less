@@ -1,0 +1,85 @@
+@import "colorDefinations";
+
+#intro-section {
+  width:100%;
+  height: calc(~"100vh - 65px");
+  background: @customBlack;
+  text-align: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid @customBlue;
+  #intro-svg {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 170px;
+    height: 45px;
+    rect {
+      transition: all 0.6s ease;
+      stroke-dasharray: 0,430;
+      stroke-dashoffset: 0;
+      stroke-width:4;
+    }
+    &:hover rect{
+      stroke-dasharray: 430;
+      stroke-dashoffset: 0;
+    }
+  }
+  #intro-box {
+    display: inline-block;
+    margin-top: 30vh;
+    width: 650px;
+    height: 230px;
+    #intro-text {
+      margin-top: 30px;
+      color: #fff;
+      font-size: 50px;
+      font-family: Raleway;
+    }
+    #intro-interest-container{
+      margin-top: 4px;
+      .intro-interest {
+        font-family: Roboto;
+        margin:0px 4px;
+        color: #fff;
+        padding: 4px 6px;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .intro-interest1 {
+          background: @customBlueDark;
+      }
+      .intro-interest2 {
+          background: @customPink;
+      }
+      .intro-interest3 {
+          background: @customOrange;
+      }
+    }
+    #intro-button {
+      font-family: Roboto;
+      font-weight: bold;
+      margin-top: 50px;
+      box-sizing: border-box;
+      position: relative;
+      width: 170px;
+      height: 45px;
+      cursor: pointer;
+      background: @customPurple;
+      display: inline-block;
+      color: white;
+      padding: 10px 20px;
+      transition: background 0.4s, border 0.4s;
+      .intro-button-arrow {
+        margin-left: 10px;
+        transition: transform 0.4s;
+      }
+      &:hover .intro-button-arrow{
+        transform: rotateZ(90deg);
+      }
+      &:hover {
+        background:none;
+      }
+    }
+  }
+}

@@ -1,0 +1,94 @@
+@import "colorDefinations";
+
+#timeline-section {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  #timelinePath {
+    width: 100%;
+    margin-top: 60px;
+    svg {
+      width: 42px;
+      height: 1000px;
+      circle {
+        cursor: pointer;
+        transition: stroke 0.6s, fill 0.6s;
+        &:hover {
+          stroke: @customPurple;
+          fill: @customPurple;
+        }
+      }
+    }
+  }
+  .customTooltip {
+    padding: 6px 10px;
+    position: absolute;
+    display: inline-block;
+    border-radius: 4px;
+    color: @customTextBlack;
+    margin-left: 40px;
+    border: 2px solid #8f8f8f;
+    height: 98px;
+    .customTip {
+      position: absolute;
+      display: inline-block;
+      height: 3px;
+      top: 44px;
+      background: #8f8f8f;
+    }
+    .details {
+      .designation {
+        font-family: Roboto;
+        font-weight: bold;
+      }
+      .company {
+        font-family: Raleway;
+        margin-bottom: 4px;
+      }
+      .timePeriod{
+        border-top: 2px solid #8f8f8f;
+        padding-top: 4px;
+      }
+      a, a:visited, a:link{
+        color: @customPurple;
+        text-decoration: none;
+      }
+    }
+  }
+  .customTooltipFirst {
+    width: 309px;
+    .customTip{
+      width: 29px;
+      left: -29px;
+    }
+  }
+  .customTooltipSecond {
+    width: 270px;
+    .customTip{
+      width: 27px;
+      left: 266px;
+    }
+  }
+  .customTooltipThird {
+    width: 270px;
+    .customTip{
+      width: 29px;
+      left: -29px;
+    }
+  }
+  .customTooltipFourth {
+    width: 270px;
+    .customTip{
+      width: 27px;
+      left: 266px;
+    }
+  }
+  .workDetails {
+    display: none;
+    position: absolute;
+    width: 500px;
+    font-family: Indie Flower;
+    font-size: 22px;
+  }
+
+}
