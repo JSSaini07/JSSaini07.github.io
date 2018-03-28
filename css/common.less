@@ -44,11 +44,13 @@
     }
     #header {
       .moving-menu-item {
-        width: 70px !important;
+        width: 60px !important;
       }
       .menu-item {
-        width: 70px !important;
+        width: 60px !important;
         font-size: 14px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
       }
     }
     #about-section {
@@ -58,8 +60,20 @@
       }
       .right-content{
         margin-left: 0px;
-        .skill-value {
-          width: 300px !important;
+        .skill-container{
+          position: relative;
+          .skill-name {
+            position: absolute !important;
+            display: inline !important;
+            z-index: 1;
+            font-size: 12px !important;
+            width: 74px !important;
+            height: 44px !important;
+            left: -4px !important;
+          }
+          .skill-value {
+            width: 300px !important;
+          }
         }
       }
     }
@@ -72,24 +86,35 @@
     #projectsContainer{
       width: 100% !important;
       margin-left: 0px !important;
+      #projectItemsContainer {
+        .projectItem {
+          width: 96% !important;
+        }
+      }
     }
 
     #resumeContainer{
       margin-top: 50px !important;
       .viewOnline {
-        display: block !important;
+        text-align: center !important;
+        display: inline-block !important;
         float: none !important;
-        svg {
-          margin-left: 68px !important;
-        }
       }
       .downloadResume {
-        display: block !important;
+        text-align: center !important;
+        display: inline-block !important;
         float: none !important;
         margin-top: 20px !important;
         svg {
-          margin-left: 74px !important;
+          margin-left: 0px !important;
         }
       }
+  }
+  #footer-section {
+    #contactContainer {
+      .contact-item {
+        margin-top: 20px !important;
+      }
+    }
   }
 }
