@@ -1,0 +1,132 @@
+@import "colorDefinations";
+
+#genericHeading {
+  position: relative;
+  margin-top: 6vh;
+  display: inline-block;
+  color: @customTextBlack;
+  font-size: 40px;
+  height: 56px;
+  font-family: Roboto;
+  #genericHeadingDash {
+    position: relative;
+    border-bottom: 4px solid #404040;
+    height: 56px;
+    background: none;
+    top: -54px;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+    #intro-box {
+      width: 100% !important;
+      margin-top: 13vh !important;
+      padding: 0px 10px !important;
+      #intro-text {
+        font-size: 40px !important;
+      }
+      #intro-interest-container{
+          width: 226px;
+          display: inline-block;
+          margin-top: 6vh !important;
+        .intro-interest {
+          width: 218px;
+          display: inline-block;
+          margin: 6px 4px !important;
+        }
+      }
+      #intro-button {
+        margin-top: 6vh !important;
+        .intro-button-arrow {
+          display: none !important;
+        }
+      }
+    }
+    #header {
+      .moving-menu-item {
+        width: 60px !important;
+      }
+      .menu-item {
+        width: 60px !important;
+        font-size: 14px !important;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+      }
+    }
+    #about-section {
+      .left-content {
+          width: 100% !important;
+          padding: 0px 10px !important;
+      }
+      .right-content{
+        margin-left: 0px;
+        .skill-container{
+          position: relative;
+          .skill-name {
+            position: absolute !important;
+            display: inline !important;
+            z-index: 1;
+            font-size: 12px !important;
+            width: 74px !important;
+            height: 44px !important;
+            left: -4px !important;
+          }
+          .skill-value {
+            width: 300px !important;
+          }
+        }
+      }
+    }
+    #projectsIntro-section {
+      #projectsIntroQuote{
+        width: 100% !important;
+      }
+    }
+
+    #projectsContainer{
+      width: 100% !important;
+      margin-left: 0px !important;
+      #projectItemsContainer {
+        .projectItem {
+          width: 96% !important;
+        }
+      }
+    }
+
+    #timeline-section {
+      .customTooltip {
+        width : 130px !important;
+        height: inherit !important;
+      }
+      .customTooltipSecond,.customTooltipFourth {
+        .customTip {
+          left: 126px !important;
+        }
+      }
+    }
+
+    #resumeContainer{
+      margin-top: 50px !important;
+      .viewOnline {
+        text-align: center !important;
+        display: inline-block !important;
+        float: none !important;
+      }
+      .downloadResume {
+        text-align: center !important;
+        display: inline-block !important;
+        float: none !important;
+        margin-top: 20px !important;
+        svg {
+          margin-left: 0px !important;
+        }
+      }
+  }
+  #footer-section {
+    #contactContainer {
+      .contact-item {
+        margin-top: 20px !important;
+      }
+    }
+  }
+}

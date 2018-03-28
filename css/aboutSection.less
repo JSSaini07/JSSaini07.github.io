@@ -1,0 +1,70 @@
+@import "colorDefinations";
+
+#about-section {
+  width: 100%;
+  text-align: center;
+  .left-content {
+    display: inline-block;
+    width: 450px;
+    margin-top: 20vh;
+    .portfolio-image-container {
+      display: inline-block;
+      width: 300px;
+      height:300px;
+      background: url('../images/jssaini07.jpg');
+      background-size: 300px 300px;
+      background-repeat:no-repeat;
+      filter: grayscale(50%);
+      border-radius: 20px;
+    }
+    .about-me {
+      font-size: 18px;
+      margin-top: 10px;
+      font-family: Raleway;
+      color: @customTextBlack;
+    }
+  }
+  .right-content {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10vh;
+    margin-left: 15%;
+    padding-bottom: 40px;
+    .skill-container {
+      margin: 10px 0px;
+      .skill-name{
+        display: inline-block;
+        vertical-align: top;
+        width: 100px;
+        color: white;
+        padding: 10px 10px;
+        background: @customBlueDark;
+        font-family: Raleway;
+      }
+      .skill-value {
+        display: inline-block;
+        margin-left: -4px;
+        width: 400px;
+        height: 44px;
+        background: #f0f0f0;
+        position: relative;
+        .skill-value-fill {
+          display: inline-block;
+          width: 0px;
+          height: 44px;
+          background: @customBlue;
+          float: left;
+        }
+        .skill-value-fill-name {
+          position: relative;
+          display: inline-block;
+          float: right;
+          right: 10px;
+          top: 10px;
+          font-family: Raleway;
+          color: @customTextBlack;
+        }
+      }
+    }
+  }
+}
