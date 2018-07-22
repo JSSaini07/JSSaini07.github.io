@@ -11,6 +11,17 @@ function layoutInit(){
 }
 
 function applyEvents(){
+
+  var header = $('#header');
+  var menu_items = $('.menu-item');
+  var section_ids = [];
+  var scroll_location = [];
+  menu_items.map(function(i,j){
+      var section_id = j.getAttribute('target');
+      section_ids.push(section_id);
+      scroll_location.push($('#'+section_id)[0].getClientRects()[0].top);
+  });
+
   $('.menu-item').on('mouseenter',function(){
     $('.moving-menu-item').clearQueue();
     var left = this.getClientRects()[0].left;
@@ -43,30 +54,25 @@ function applyEvents(){
     }
     renderProjects();
   });
+
   $(document.body).on('scroll',function(){
-    var header = $('#header');
-    var menu_items = $('.menu-item');
 
     // logic for fixing header on scroll
     header_offset_top = header.offset().top;
     if(header_offset_top<=0){
-      header.addClass('header-fixed');
+        header.addClass('header-fixed');
     }
-
-    var sections = [];
-    menu_items.map(function(i,j){
-        sections.push(j.getAttribute('target'));
-    });
-
     //logic to unfix header
-    if($('#'+sections[1]).offset().top>=0){
+    if($('#'+section_ids[1]).offset().top>=0){
       header.removeClass('header-fixed');
     }
 
-    if($('#'+sections[1]).offset().top<=100){
+    //logic to fill skills on scroll
+    if($('#'+section_ids[1]).offset().top<=100){
       fillSkills();
     }
 
+    //logic for last section
     if($(document.body).scrollTop() + $(document.body).height() == $(document).height()){
         $('.selected-menu-item').removeClass('selected-menu-item');
         $(menu_items[menu_items.length-1]).addClass('selected-menu-item');
@@ -74,15 +80,17 @@ function applyEvents(){
         return;
     }
 
-    for(var i=0;i<sections.length;i++){
-      var j = sections.length-i-1;
-      if($('#'+sections[j]).offset().top<=100){
-        $('.selected-menu-item').removeClass('selected-menu-item');
-        $(document.querySelectorAll('.menu-item[target='+sections[j]+']')[0]).addClass('selected-menu-item');
-        $(document.querySelectorAll('.menu-item[target='+sections[j]+']')[0]).trigger('mouseleave');
-        return;
+    var scroll_loc = $(document.body).scrollTop();
+    for(var i=0;i<scroll_location.length-1;i++){
+      if(scroll_loc+100>scroll_location[i] && scroll_loc+100<scroll_location[i+1]){
+          $('.selected-menu-item').removeClass('selected-menu-item');
+          $(document.querySelectorAll('.menu-item[target='+section_ids[i]+']')[0]).addClass('selected-menu-item');
+          $(document.querySelectorAll('.menu-item[target='+section_ids[i]+']')[0]).trigger('mouseleave');
+          return;
       }
     }
+
+
   });
 
   $('#timeline-section svg circle').on('mouseenter',function(){
