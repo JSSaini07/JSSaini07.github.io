@@ -17,7 +17,7 @@
       left: 0px;
     }
     text-align: center;
-    padding: 60px;
+    padding: 60px 0px;
     background: @themePurple;
     position: relative;
     #project-header {
@@ -51,7 +51,7 @@
     }
     #projects-filter {
       margin-top: 10px;
-      padding: 30px 40px;
+      padding: 30px 10px;
       .project-technology {
         display: inline-block;
         border: 2px solid @themePurple;
@@ -77,15 +77,16 @@
   #projects-content-container {
     margin-top: 20px;
     a, a:link, a:visited {
+      display: inline-block;
       color: inherit !important;
       text-decoration: none !important;
+      width: 450px;
+      margin: 20px;
     }
     .project-item {
       display: inline-block;
-      margin: 20px;
       border: 2px solid rgba(20,26,44,0.05);
       background: #fff;
-      width: 450px;
       border-radius: 4px;
       vertical-align: top;
       .project-thumbnail {
