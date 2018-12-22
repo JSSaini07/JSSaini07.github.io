@@ -24,6 +24,7 @@ function scrollEvents() {
   if($('#skill-container')[0].getBoundingClientRect().y < 0.95 * window.innerHeight) {
     monitorScroll = false;
     showSkillProgress();
+    placeTimelines(); // just to be sure that DOM loading did not interfere with timeline placing
   }
 }
 
@@ -88,7 +89,7 @@ function placeTimelines(){
   var x3 = svg_coords.x+60;
   var x4 = svg_coords.x+60;
   var x5 = svg_coords.x+60;
-
+  
   var y1 = svg.find('circle')[1].getBoundingClientRect().y+10 - (tooltip1[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
   var y2 = svg.find('circle')[2].getBoundingClientRect().y+10 - (tooltip2[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
   var y3 = svg.find('circle')[3].getBoundingClientRect().y+10 - (tooltip3[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
