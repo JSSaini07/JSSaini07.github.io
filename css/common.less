@@ -1,19 +1,40 @@
 @import "colorDefinations";
 
-#genericHeading {
-  position: relative;
-  margin-top: 6vh;
-  display: inline-block;
-  color: @customTextBlack;
-  font-size: 40px;
-  height: 56px;
-  font-family: Roboto;
-  #genericHeadingDash {
-    position: relative;
-    border-bottom: 4px solid #404040;
-    height: 56px;
-    background: none;
-    top: -54px;
+@media only screen and (max-width: 750px) {
+  #intro-section {
+    #intro-box {
+      padding-bottom: 175px !important; 
+    }
+    #art-image-container {
+      display: none;
+    }
+  }
+  #about-section {
+    #skill-container {
+      width: 450px;
+      left: calc(50% - 225px);
+      #skill-content-container {
+        .skill-items-container {
+          .skill-item-container {
+            width: 90px !important;
+          }
+        }
+      }
+    }
+  }
+  #resume-section {
+    #resume-content-container {
+      #resume-content {
+        #view-online, #download {
+          padding: 100px 60px !important;
+        }
+      }
+    }
+  }
+  #contact-section {
+    #contact-form-container {
+      width: 500px !important;
+    }
   }
 }
 

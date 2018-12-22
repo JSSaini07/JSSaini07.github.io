@@ -1,68 +1,71 @@
 @import "colorDefinations";
 
 #about-section {
-  width: 100%;
+  background: @themePurple;
   text-align: center;
-  .left-content {
-    display: inline-block;
-    width: 450px;
-    margin-top: 20vh;
-    .portfolio-image-container {
-      display: inline-block;
-      width: 300px;
-      height:300px;
-      background: url('../images/jssaini07.jpg');
-      background-size: 300px 300px;
-      background-repeat:no-repeat;
-      filter: grayscale(50%);
-      border-radius: 20px;
-    }
-    .about-me {
-      font-size: 18px;
-      margin-top: 10px;
-      font-family: Raleway;
-      color: @customTextBlack;
-    }
+  position: relative;
+  #about-intro {
+    color: white;
+    padding: 120px;
+    padding-bottom: 100px; 
+    font-family: Quicksand;
+    font-weight: bold;
+    font-size: 22px;
   }
-  .right-content {
+  #skill-container {
+    position: absolute;
+    z-index: 2;
+    box-shadow: 0 0 7px 0 rgba(72,72,72,0.3);
     display: inline-block;
-    vertical-align: top;
-    margin-top: 10vh;
-    margin-left: 15%;
-    padding-bottom: 40px;
-    .skill-container {
-      margin: 10px 0px;
-      .skill-name{
-        display: inline-block;
-        vertical-align: top;
-        width: 100px;
-        color: white;
-        padding: 10px 10px;
-        background: @customBlueDark;
-        font-family: Raleway;
-      }
-      .skill-value {
-        display: inline-block;
-        margin-left: -4px;
-        width: 400px;
-        height: 44px;
-        background: #f0f0f0;
-        position: relative;
-        .skill-value-fill {
-          display: inline-block;
-          width: 0px;
-          height: 44px;
-          background: @customBlue;
-          float: left;
+    width: 750px;
+    background: white;
+    border-radius: 10px;
+    left: calc(50% - 375px);
+    top: calc(100% - 50px);
+    #skill-header {
+      font-size: 20px;
+      padding: 20px;
+      color: @themePurple;
+      font-family: Roboto;
+      font-weight: bold;
+    }
+    #skill-content-container {
+      .skill-category-container {
+        .skill-category-header {
+          background: #f9f9f9;
+          text-align: left;
+          width: 300px;
+          padding: 5px 10px;
+          color: @themePurple;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+          font-weight: bold;
+          font-family: Roboto;
         }
-        .skill-value-fill-name {
-          position: relative;
-          display: inline-block;
-          float: right;
-          right: 10px;
-          top: 10px;
-          font-family: Raleway;
-          color: @customTextBlack;
+        .skill-items-container {
+          padding: 20px;
+          .skill-item-container {
+            display: inline-block;
+            width: 180px;
+            margin: 10px 20px;
+            border: 1px solid rgba(57,0,101,0.66);
+            border-radius: 4px;
+            .skill-progress {
+              position: relative;
+              border-radius: 2px;
+              border: 2px solid rgba(57,0,101,0.72);
+              width: 0%;
+              opacity: 0;
+              margin-top: 0px;
+              top: 2px;
+            }
+            .skill-name {
+              padding: 5px;
+              font-family: Rammetto One;
+              font-size: 12px;
+              color: @customHeaderPurple;
+            }
+          }
         }
       }
     }

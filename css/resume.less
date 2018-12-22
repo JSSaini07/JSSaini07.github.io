@@ -1,36 +1,44 @@
+@import 'colorDefinations.less';
+
 #resume-section {
-  height: 500px;
-  #resumeContainer {
-    display: inline-block;
-    margin-top: 140px;
-    width: 40%;
-    a, a:link, a:visited {
-      text-decoration: none;
-      color: inherit;
+    text-align: center;
+    #resume-header {
+        background: @themePurple;
+        color: #fff;
+        height: 124px;
+        margin-top: -6px;
+        #heading {
+          display: inline-block;
+          margin-top: 44px;
+          font-size: 24px;
+          font-family: Rammetto One;
+          color: #fff;
+          background: rgba(20, 26, 43, 0.65);
+          font-weight: bold;
+          border-radius: 10px;
+          padding: 10px 20px;
+          position: relative;
+          .file {
+            vertical-align: middle;
+            margin-left: 4px;
+          }
+        }
     }
-    .viewOnline {
-      display: inline-block;
-      float: left;
-      span {
-        display: block;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: Raleway;
+    #resume-content-container {
+      #resume-content {
+        display: inline-block;
+        #view-online, #download {
+          display: inline-block;
+          padding: 100px;
+          color: @customHeaderPurple;
+          span {
+            display: block;
+            font-size: 20px;
+            font-family: Quicksand;
+            font-weight: bold;
+            padding: 20px 0px; 
+          }
+        }
       }
     }
-    .downloadResume {
-      display: inline-block;
-      float: right;
-      svg {
-        float: left;
-        margin-left: 47px;
-      }
-      span {
-        display: block;
-        margin-top: 10px;
-        font-size: 20px;
-        font-family: Raleway;
-      }
-    }
-  }
 }

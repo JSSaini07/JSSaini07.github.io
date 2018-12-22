@@ -1,89 +1,132 @@
 @import "colorDefinations";
 
+
 #projects-section {
-  width: 100%;
-  text-align: center;
-  #filterProjects {
-    .filter-item {
-      display: inline-block;
-      margin: 4px 4px;
-      font-size: 14px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-family: Raleway;
-      color: black;
-      border: 2px solid black;
-      cursor: pointer;
-      transition: background 0.6s;
-      &:hover {
-        background: @customBlue;
-      }
+  margin-top: 590px;
+  position: relative;
+  z-index: 1;
+  #projects-header-container {
+    .background-overlay {
+      position: absolute;
+      background: url(../images/confetti.svg);
+      background-size: 150px;
+      opacity: 0.1;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
     }
-    .filter-item-selected {
-      background: @customBlue;
+    text-align: center;
+    padding: 60px;
+    background: @themePurple;
+    position: relative;
+    #project-header {
+      margin-top: 100px;
+      color: white;
+      #heading {
+        font-family: Roboto;
+        font-weight: bold;
+        font-size: 22px;
+        background: rgba(20, 26, 43, 0.65);
+        border-radius: 10px;
+        padding: 10px 20px;
+        position: relative;
+      }
     }
   }
-  #projectsContainer {
-    color: @customTextBlack;
-    width: 80%;
-    margin-left: 10%;
-    #projectItemsContainer{
-      margin-top: 20px;
-      a, a:link, a:visited {
-        color: inherit !important;
-        text-decoration: none !important;
+  #projects-container {
+    text-align: center;
+    #projects-container-heading {
+      .terminal {
+        vertical-align: initial;
       }
-      .projectItem {
+      #heading {
         display: inline-block;
-        margin: 10px;
-        padding: 16px;
-        padding-top: 0px;
-        border-radius: 4px;
-        border: 2px solid rgba(30,29,39,0.19);
+        margin-top: 30px;
+        font-size: 24px;
+        font-family: Rammetto One;
+        padding: 6px;
+        color: @customHeaderPurple;
+      }
+    }
+    #projects-filter {
+      margin-top: 10px;
+      padding: 30px 40px;
+      .project-technology {
         display: inline-block;
-        width: 450px;
-        vertical-align: top;
-        .projectThumbnail {
-          width: 100%;
-          height: 250px;
+        border: 2px solid @themePurple;
+        padding: 4px 10px;
+        border-radius: 10px;
+        margin: 10px 10px;
+        font-family: Quicksand;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 200ms, color 200ms;
+        &:hover {
+          background: @themePurple;
+          color: white;
         }
-        .projectName {
-          text-align: left;
-          margin: 16px 0px 10px 0px;
-          span {
-            font-family: Raleway;
-            font-size: 16px;
-            background: @customBlueDark;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 4px;
-          }
-        }
-        .projectDescription {
+      }
+      .filter-selected {
+        background: @themePurple;
+        color: white;
+      }
+    }
+  }
+  #projects-content-container {
+    margin-top: 20px;
+    a, a:link, a:visited {
+      color: inherit !important;
+      text-decoration: none !important;
+    }
+    .project-item {
+      display: inline-block;
+      margin: 20px;
+      border: 2px solid rgba(20,26,44,0.05);
+      background: #fff;
+      width: 450px;
+      border-radius: 4px;
+      vertical-align: top;
+      .project-thumbnail {
+        width: 100%;
+        height: 250px;
+      }
+      .project-name {
+        background: @customHeaderPurple;
+        border-bottom: 2px soid @themePurple;
+        color: white;
+        font-size: 18px;
+        font-family: Raleway;
+        padding: 10px;
+        font-weight: bold;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+      .project-description {
+        font-family: Quicksand;
+        padding: 4px 10px;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(20,26,44,0.05);
+        padding: 15px 10px;
+        font-weight: bold;
+      }
+      .tags-container {
+        padding: 10px;
+        .tag {
+          display: inline-block;
+          border: 1px solid @customHeaderPurple;
+          color: @customHeaderPurple;
+          padding: 2px 10px;
+          border-radius: 8px;
+          font-size: 10px;
+          font-weight: bold;
           font-family: Roboto;
-          padding: 4px 10px;
-          font-size: 16px;
-          margin-top: 10px;
-          border-top:1px solid rgba(30,29,39,0.19);
-          border-bottom:1px solid rgba(30,29,39,0.19);
-        }
-        .tagsContainer {
-          margin-top: 10px;
-          .tag {
-            display: inline-block;
-            background: @customPink;
-            color: #fff;
-            padding: 2px 10px;
-            border-radius: 8px;
-            font-size: 10px;
-            font-weight: bold;
-            font-family: Roboto;
-          }
         }
       }
-      .hiddenProjectItem {
-        display: none;
-      }
+    }
+    .project-hidden {
+      display: none;
     }
   }
 }
