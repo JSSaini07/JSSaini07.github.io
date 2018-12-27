@@ -18,13 +18,12 @@ $(document).ready(function(){
     $.ajax({
       url: "http://jssemailservice.herokuapp.com/send",
       method: "POST",
-      data: {
+      data: JSON.stringify({
         name: name,
         email: email,
         content: content
-      },
+      }),
       success: function(res) {
-        var res = JSON.parse(res);
         if(res.status){
           helperText.addClass('submit-contact-form-helper-text-success');
           helperText.text('Sent');
