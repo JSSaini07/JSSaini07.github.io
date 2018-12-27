@@ -18,6 +18,7 @@ $(document).ready(function(){
     $.ajax({
       url: "http://jssemailservice.herokuapp.com/send",
       method: "POST",
+      contentType: "application/json",
       data: JSON.stringify({
         name: name,
         email: email,
