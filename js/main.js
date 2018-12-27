@@ -8,6 +8,34 @@ $(document).ready(function(){
       scrollTop: $('#contact-section').offset().top,
     }, 800);
   });
+  $('#submit-contact-form').click(function(){
+    var name = $('#contact-form-name').text();
+    var email = $('#contact-form-email').text();
+    var content = $('#contact-form-content').text();
+    var helperText = $('#submit-contact-form-helper-text');
+    helperText.removeClass('submit-contact-form-helper-text-success');
+    helperText.removeClass('submit-contact-form-helper-text-fail');
+    $.ajax({
+      url: "http://jssemailservice.herokuapp.com/send",
+      method: "POST",
+      data: {
+        name: name,
+        email: email,
+        content: content
+      },
+      success: function(res) {
+        var res = JSON.parse(res);
+        if(res.status){
+          helperText.addClass('submit-contact-form-helper-text-success');
+          helperText.text('Sent');
+        } else {
+          helperText.addClass('submit-contact-form-helper-text-fail');
+          helperText.text('Failed to send the message');
+        }
+        helperText.show();
+      }
+    }); 
+  });
 });
 
 function showSkillProgress() {
@@ -110,13 +138,13 @@ function handleParallax() {
   var containers = $('.parallax');
   for(var i=0;i<containers.length;i++) {
     var currentContainer = $(containers[i]);
-    $(currentContainer).css({position: 'relative'});
-    var top = currentContainer.offset().top;
+    // $(currentContainer).css({position: 'relative'});
+    var top = currentContainer[0].getBoundingClientRect().y;
     var height = currentContainer.height();
     if((top < window.innerHeight) && (top + height >= 0)) {
       var change = (top - window.innerHeight)/20;
       currentContainer.css({
-        top: change,
+        top: change
       })
     }
   }

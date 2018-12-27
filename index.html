@@ -3,13 +3,6 @@
 <head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130273208-1"></script>
   <script>
-    var i=0;
-    while(i<10000){
-      console.log('here');
-      i=i+1;
-    }
-  </script>
-  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -399,22 +392,23 @@
           <div class="field-group">
             <div class="label">Name</div>
             <div class="value">
-              <input type="text"/>
+              <input type="text" id="contact-form-name"/>
             </div>
           </div>
           <div class="field-group">
             <div class="label">Email</div>
             <div class="value">
-                <input type="text"/>
+                <input type="text" id="contact-form-email"/>
             </div>
           </div><br>
           <div class="field-group" style="width: 88%;">
             <div class="label">Message</div>
             <div class="value">
-                <textarea type="text"></textarea>
+                <textarea type="text" id="contact-form-content"></textarea>
             </div>
           </div>
           <div id="submit-contact-form">Submit</div>
+          <div id="submit-contact-form-helper-text"></div>
         </div>
       </div>
   </div>
