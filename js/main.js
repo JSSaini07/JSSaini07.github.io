@@ -9,9 +9,9 @@ $(document).ready(function(){
     }, 800);
   });
   $('#submit-contact-form').click(function(){
-    var name = $('#contact-form-name').text();
-    var email = $('#contact-form-email').text();
-    var content = $('#contact-form-content').text();
+    var name = $('#contact-form-name').val();
+    var email = $('#contact-form-email').val();
+    var content = $('#contact-form-content').val();
     var helperText = $('#submit-contact-form-helper-text');
     helperText.removeClass('submit-contact-form-helper-text-success');
     helperText.removeClass('submit-contact-form-helper-text-fail');
