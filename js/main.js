@@ -33,6 +33,12 @@ $(document).ready(function(){
           helperText.text('Failed to send the message');
         }
         helperText.show();
+      },
+      error: function(err) {
+        helperText.addClass('submit-contact-form-helper-text-fail');
+        helperText.text('Failed to send the message');
+        helperText.show();
+        console.log(err);
       }
     }); 
   });
