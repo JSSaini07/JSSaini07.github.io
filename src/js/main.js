@@ -85,7 +85,7 @@ function handleProjectFilters() {
     else {
       $(this).addClass('filter-selected');
     }
-    var selectedTags = $('.filter-selected').map((index,elem)=>$(elem).data('filter'));
+    var selectedTags = $('.filter-selected').map(function(index,elem){return $(elem).data('filter')});
     selectedTags = Array.from(selectedTags);
     handleProjectVisibility(selectedTags);
   });
@@ -97,9 +97,9 @@ function handleProjectVisibility(selectedTags) {
     projectItems.removeClass('project-hidden');
     return;
   }
-  projectItems.map((index, element) => {
+  projectItems.map(function(index, element) {
     var tags = $(element).find('.tag');
-    tags = tags.filter((index,tag) => {
+    tags = tags.filter(function(index,tag) {
       return selectedTags.indexOf($(tag).text())>=0;
     });
     $(element).removeClass('project-hidden');
