@@ -24,8 +24,14 @@ module.exports = function(grunt) {
         },
         inline: {
             dist: {
-              src: 'index-dev.html',
-              dest: 'index.html'
+                options: {
+                    inlineTagAttributes: {
+                        js: 'data-inlined="true"',
+                        css: 'data-inlined="true"'
+                    }
+                },
+                src: 'index-dev.html',
+                dest: 'index.html'
             }
         },
         imagemin: {            
