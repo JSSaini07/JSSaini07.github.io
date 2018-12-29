@@ -1,6 +1,7 @@
 module.exports = function(grunt) {
     require('jit-grunt')(grunt);
     const mozjpeg = require('imagemin-mozjpeg');
+    const imageminOptipng = require('imagemin-optipng');
     grunt.initConfig({
         less: {
             development: {
@@ -32,7 +33,7 @@ module.exports = function(grunt) {
                 options: {
                     optimizationLevel: 7,
                     svgoPlugins: [{removeViewBox: false}],
-                    use: [mozjpeg()] 
+                    use: [imageminOptipng(), mozjpeg()] 
                 },
                 files: [{
                     expand: true,
