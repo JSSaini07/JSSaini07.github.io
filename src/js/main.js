@@ -1,6 +1,7 @@
 var monitorScroll = true;
 
 $(document).ready(function(){
+  track();
   handleProjectFilters();
   placeTimelines();
   $('#intro-section #intro-header #contact').click(function(){
@@ -154,6 +155,13 @@ function handleParallax() {
       })
     }
   }
+}
+
+function track() {
+  $.ajax({
+    url: 'http://jssemailservice.herokuapp.com/track',
+    method: 'get',
+  });
 }
 
 window.onresize = placeTimelines;
