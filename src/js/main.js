@@ -158,9 +158,16 @@ function handleParallax() {
 }
 
 function track() {
-  $.ajax({
-    url: 'http://jssemailservice.herokuapp.com/track',
-    method: 'get',
+  function sendTrackingRequest(ip) {
+    $.ajax({
+      url: 'http://jssemailservice.herokuapp.com/track',
+      data: {ip: ip},
+      method: 'get',
+    });
+  }
+  $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+    var ip = data.geobytesipaddress ||  data.geobytesremoteip;
+    sendTrackingRequest(ip);
   });
 }
 
