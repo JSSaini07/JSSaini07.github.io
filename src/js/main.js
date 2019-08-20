@@ -1,4 +1,5 @@
 var monitorScroll = true;
+var ip = null;
 
 $(document).ready(function(){
   track();
@@ -17,13 +18,14 @@ $(document).ready(function(){
     helperText.removeClass('submit-contact-form-helper-text-success');
     helperText.removeClass('submit-contact-form-helper-text-fail');
     $.ajax({
-      url: "http://jssemailservice.herokuapp.com/send",
+      url: "http://jssemailservice.herokuapp.com/send"+ip,
       method: "POST",
       contentType: "application/json",
       data: JSON.stringify({
         name: name,
         email: email,
-        content: content
+        content: content,
+        ip: ip,
       }),
       success: function(res) {
         if(res.status){
@@ -165,10 +167,10 @@ function track() {
       method: 'get',
     });
   }
-  $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
-    var ip = data.geobytesipaddress ||  data.geobytesremoteip;
-    sendTrackingRequest(ip);
-  });
+  $.get("https://ipinfo.io", function(data) {
+    ip = data.ip;
+    sendTrackingRequest(data.ip);
+  }, "jsonp")
 }
 
 window.onresize = placeTimelines;
