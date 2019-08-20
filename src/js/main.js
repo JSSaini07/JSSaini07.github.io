@@ -18,7 +18,7 @@ $(document).ready(function(){
     helperText.removeClass('submit-contact-form-helper-text-success');
     helperText.removeClass('submit-contact-form-helper-text-fail');
     $.ajax({
-      url: "http://jssemailservice.herokuapp.com/send"+ip,
+      url: "https://jssemailservice.herokuapp.com/send"+ip,
       method: "POST",
       contentType: "application/json",
       data: JSON.stringify({
@@ -162,7 +162,7 @@ function handleParallax() {
 function track() {
   function sendTrackingRequest(ip) {
     $.ajax({
-      url: 'http://jssemailservice.herokuapp.com/track',
+      url: 'https://jssemailservice.herokuapp.com/track',
       data: {ip: ip},
       method: 'get',
     });
