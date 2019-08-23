@@ -18,7 +18,7 @@ $(document).ready(function(){
     helperText.removeClass('submit-contact-form-helper-text-success');
     helperText.removeClass('submit-contact-form-helper-text-fail');
     $.ajax({
-      url: "https://jssemailservice.herokuapp.com/send"+ip,
+      url: "https://jssemailservice.herokuapp.com/send?ip="+ip,
       method: "POST",
       contentType: "application/json",
       data: JSON.stringify({
