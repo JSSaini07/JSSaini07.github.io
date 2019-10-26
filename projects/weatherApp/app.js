@@ -21655,7 +21655,7 @@
 
 	function getSearchResult(searchTerm) {
 	  var API_KEY = 'f1a3d4344c446b4b097a4c121e4ba71d';
-	  var url = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + API_KEY + '&q=' + searchTerm;
+	  var url = 'https://api.openweathermap.org/data/2.5/forecast?appid=' + API_KEY + '&q=' + searchTerm;
 	  var request = _axios2.default.get(url);
 	  return {
 	    type: 'FETCH_WEATHER',
