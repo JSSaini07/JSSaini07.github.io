@@ -35,9 +35,9 @@ $(document).ready(function(){
 });
 
 function getWeather() {
-  console.log('http://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&units=metric&appid=f1a3d4344c446b4b097a4c121e4ba71d');
+  console.log('https://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&units=metric&appid=f1a3d4344c446b4b097a4c121e4ba71d');
 	$.ajax({
-		url:'http://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&units=metric&appid=f1a3d4344c446b4b097a4c121e4ba71d',
+		url:'https://api.openweathermap.org/data/2.5/weather?q='+city+','+country+'&units=metric&appid=f1a3d4344c446b4b097a4c121e4ba71d',
 		method:'GET',
 		success:function(r){
       console.log(r);
