@@ -120,27 +120,32 @@ function placeTimelines(){
   var tooltip3 = $('.customTooltipThird');
   var tooltip4 = $('.customTooltipFourth');
   var tooltip5 = $('.customTooltipFifth');
+  var tooltip6 = $('.customTooltipSixth');
 
   var x1 = svg_coords.x+60;
   var x2 = svg_coords.x+60;
   var x3 = svg_coords.x+60;
   var x4 = svg_coords.x+60;
   var x5 = svg_coords.x+60;
+  var x6 = svg_coords.x+60;
   
   var y1 = svg.find('circle')[1].getBoundingClientRect().y+10 - (tooltip1[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
   var y2 = svg.find('circle')[2].getBoundingClientRect().y+10 - (tooltip2[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
   var y3 = svg.find('circle')[3].getBoundingClientRect().y+10 - (tooltip3[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
   var y4 = svg.find('circle')[4].getBoundingClientRect().y+10 - (tooltip4[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
   var y5 = svg.find('circle')[5].getBoundingClientRect().y+10 - (tooltip5[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
+  var y6 = svg.find('circle')[6].getBoundingClientRect().y+10 - (tooltip6[0].getBoundingClientRect().height/2) - $('#timeline-section')[0].getBoundingClientRect().y;
 
   tooltip1.css({'left':x1+'px', 'top':y1+'px'});
   tooltip2.css({'right':x2+'px', 'top':y2+'px'});
   tooltip3.css({'left':x3+'px', 'top':y3+'px'});
   tooltip4.css({'right':x4+'px', 'top':y4+'px'});
   tooltip5.css({'left':x5+'px', 'top':y5+'px'});
+  tooltip6.css({'right':x6+'px', 'top':y6+'px'});
 
   $('.customTooltipSecond .customTip').css({'left': tooltip2[0].getBoundingClientRect().width -2 });
   $('.customTooltipFourth .customTip').css({'left': tooltip4[0].getBoundingClientRect().width -2 });
+  $('.customTooltipSixth .customTip').css({'left': tooltip6[0].getBoundingClientRect().width -2 });
 }
 
 function handleParallax() {
