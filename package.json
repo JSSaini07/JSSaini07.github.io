@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/JSSaini07/JSSaini07.github.io#readme",
   "devDependencies": {
-    "grunt": "^1.0.3",
+    "grunt": "^1.5.2",
     "grunt-contrib-imagemin": "^3.1.0",
     "grunt-contrib-less": "^2.0.0",
     "grunt-contrib-uglify": "^4.0.0",
