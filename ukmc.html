@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UKMC Admissions Process</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f5f4f0;
+    --color-background-tertiary: #eceae3;
+    --color-background-info: #e6f1fb;
+    --color-background-success: #eaf3de;
+    --color-background-warning: #faeeda;
+    --color-background-danger: #fcebeb;
+    --color-text-primary: #1a1a18;
+    --color-text-secondary: #5f5e5a;
+    --color-text-tertiary: #888780;
+    --color-text-info: #0c447c;
+    --color-text-success: #27500a;
+    --color-text-warning: #633806;
+    --color-text-danger: #791f1f;
+    --color-border-tertiary: rgba(0,0,0,0.12);
+    --color-border-secondary: rgba(0,0,0,0.22);
+    --color-border-info: #85b7eb;
+    --color-border-success: #97c459;
+    --color-border-warning: #ef9f27;
+    --color-border-danger: #f09595;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --font-sans: system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-background-primary: #1e1e1c;
+      --color-background-secondary: #2a2a27;
+      --color-background-tertiary: #333330;
+      --color-background-info: #042c53;
+      --color-background-success: #173404;
+      --color-background-warning: #412402;
+      --color-background-danger: #501313;
+      --color-text-primary: #e8e6dc;
+      --color-text-secondary: #b4b2a9;
+      --color-text-tertiary: #888780;
+      --color-text-info: #85b7eb;
+      --color-text-success: #97c459;
+      --color-text-warning: #ef9f27;
+      --color-text-danger: #f09595;
+      --color-border-tertiary: rgba(255,255,255,0.12);
+      --color-border-secondary: rgba(255,255,255,0.22);
+      --color-border-info: #185fa5;
+      --color-border-success: #3b6d11;
+      --color-border-warning: #854f0b;
+      --color-border-danger: #a32d2d;
+    }
+  }
+  body {
+    font-family: var(--font-sans);
+    background: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; color: var(--color-text-primary); }
+  .subtitle { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 20px; }
+  .flow-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+  .flow-box { padding: 6px 12px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); font-size: 12px; font-weight: 500; color: var(--color-text-primary); background: var(--color-background-primary); white-space: nowrap; }
+  .flow-box.info { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+  .flow-box.success { background: var(--color-background-success); color: var(--color-text-success); border-color: var(--color-border-success); }
+  .flow-arr { color: var(--color-text-tertiary); font-size: 14px; }
+  .stage-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .tab { padding: 7px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-secondary); background: var(--color-background-primary); font-size: 13px; font-weight: 500; cursor: pointer; color: var(--color-text-secondary); transition: all .15s; font-family: var(--font-sans); }
+  .tab.active { background: var(--color-background-info); color: var(--color-text-info); border-color: var(--color-border-info); }
+  .tab:hover:not(.active) { background: var(--color-background-secondary); }
+  .panel { display: none; } .panel.active { display: block; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; margin-bottom: 10px; }
+  .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 0; cursor: pointer; user-select: none; }
+  .badge { font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 99px; }
+  .badge-blue { background: var(--color-background-info); color: var(--color-text-info); }
+  .badge-amber { background: var(--color-background-warning); color: var(--color-text-warning); }
+  .badge-red { background: var(--color-background-danger); color: var(--color-text-danger); }
+  .badge-green { background: var(--color-background-success); color: var(--color-text-success); }
+  .badge-gray { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); flex: 1; }
+  .chevron { font-size: 11px; color: var(--color-text-tertiary); transition: transform .2s; }
+  .chevron.open { transform: rotate(90deg); }
+  .step-body { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; display: none; margin-top: 10px; }
+  .step-body.open { display: block; }
+  .step-body ul { padding-left: 16px; margin-top: 6px; }
+  .step-body li { margin-bottom: 4px; }
+  .step-body p { margin-bottom: 6px; }
+  .step-body strong { font-weight: 500; color: var(--color-text-primary); }
+  .step-body code { font-size: 12px; background: var(--color-background-secondary); padding: 1px 5px; border-radius: 4px; }
+  .outcome { display: flex; align-items: flex-start; gap: 8px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 8px 10px; margin-top: 6px; font-size: 12px; }
+  .outcome-icon { font-size: 13px; margin-top: 1px; }
+  hr.divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 8px 0; }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 480px) { .two-col { grid-template-columns: 1fr; } }
+  .schedule-grid { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 13px; }
+  .schedule-time { color: var(--color-text-tertiary); }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>UKMC Admissions Process</h1>
+  <p class="subtitle">Interactive guide to the full admissions journey</p>
+
+  <div class="flow-row">
+    <div class="flow-box">Application received</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box info">Stage 1: Review</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box info">Stage 2: PFF Day</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box info">Stage 3: Compliance</div>
+    <div class="flow-arr">→</div>
+    <div class="flow-box success">Stage 4: Submit</div>
+  </div>
+
+  <div class="stage-tabs">
+    <button class="tab active" onclick="showPanel('s1',this)">Stage 1 — Initial review</button>
+    <button class="tab" onclick="showPanel('s2',this)">Stage 2 — PFF Day</button>
+    <button class="tab" onclick="showPanel('s3',this)">Stage 3 — Compliance</button>
+    <button class="tab" onclick="showPanel('s4',this)">Stage 4 — Submission</button>
+    <button class="tab" onclick="showPanel('misc',this)">Misc &amp; best practices</button>
+  </div>
+
+  <div id="s1" class="panel active">
+    <div class="section-label">Timekeeping schedule (09:00 – 17:00)</div>
+    <div class="card" style="padding:10px 14px">
+      <div class="schedule-grid">
+        <span class="schedule-time">09:00–10:00</span><span>Pending docs check &amp; admissions tickets</span>
+        <span class="schedule-time">10:00–11:30</span><span>Pre-screening all assigned learner apps</span>
+        <span class="schedule-time">11:30–13:00</span><span>Post-screening / PFF / submissions</span>
+        <span class="schedule-time">13:00–13:30</span><span>Lunch</span>
+        <span class="schedule-time">13:30–15:00</span><span>Pre-task screening</span>
+        <span class="schedule-time">15:00–17:00</span><span>Post-screening / PFF / submissions</span>
+      </div>
+    </div>
+    <div class="section-label">Pre-screening checks</div>
+    <div id="cards-s1"></div>
+  </div>
+  <div id="s2" class="panel"><div id="cards-s2"></div></div>
+  <div id="s3" class="panel"><div id="cards-s3"></div></div>
+  <div id="s4" class="panel"><div id="cards-s4"></div></div>
+  <div id="misc" class="panel"><div id="cards-misc"></div></div>
+</div>
+
+<script>
+function showPanel(id, btn){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function toggle(el){
+  const body=el.closest('.card').querySelector('.step-body');
+  const chev=el.querySelector('.chevron');
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+function mkCard(title,badge,badgeClass,bodyHtml){
+  return `<div class="card"><div class="card-head" onclick="toggle(this)"><span class="badge ${badgeClass}">${badge}</span><span class="step-title">${title}</span><span class="chevron">&#9658;</span></div><div class="step-body">${bodyHtml}</div></div>`;
+}
+function outcome(icon,text){return `<div class="outcome"><span class="outcome-icon">${icon}</span><span>${text}</span></div>`}
+
+const s1=[
+  mkCard('Application assignment','Assign','badge-gray',`
+    <p>Each application is assigned to an admissions officer (AO) who becomes responsible for all actions. Assignment is random — no bias or preferential treatment.</p>
+  `),
+  mkCard('Duplication check','Check','badge-amber',`
+    <p>Search applicant in Concierge/EBS using person code, forename, and surname. Handle duplicates as follows:</p>
+    <ul>
+      <li><strong>Previously enrolled</strong> — check with registry; if still enrolled, direct to SST</li>
+      <li><strong>Previously rejected</strong> — escalate to Admissions Manager for appeal review</li>
+      <li><strong>Same intake duplicate</strong> — cancel duplicate; update code to UNSUCCESSFUL AT PRESCREENING – Duplicate</li>
+      <li><strong>Different agency</strong> — escalate to recruitment; cancel second application</li>
+      <li><strong>Different centre</strong> — verify travel distance; applicant chooses preferred centre</li>
+      <li><strong>Different programme</strong> — confirm preferred course; cancel other application</li>
+      <li><strong>Previous intake</strong> — review prior status; escalate if previously submitted/enrolled</li>
+    </ul>
+  `),
+  mkCard('Applicant details verification','Verify','badge-blue',`
+    <div class="two-col">
+      <div><strong>Name &amp; DOB</strong><ul><li>Match against ID document</li><li>DOB format: DD/MM/YYYY</li></ul></div>
+      <div><strong>Contact details</strong><ul><li>Mobile: no +44 (0) prefix</li><li>Emergency contact must differ from applicant</li></ul></div>
+    </div>
+    <hr class="divider">
+    <p>Significant discrepancies (e.g. different address) → contact applicant and flag as potential fraud risk to Compliance Team.</p>
+  `),
+  mkCard('Address &amp; travel distance','Distance','badge-amber',`
+    <p>Maximum distance: <strong>1h 30m or 50 miles</strong> from centre. Check via Google Maps — car travel at 09:00 on a Monday. Use shortest distance shown.</p>
+    ${outcome('✗','Outside limit → progress code: UNSUCCESSFUL AT PRESCREENING – Distance too far from centre')}
+  `),
+  mkCard('Equal opportunities &amp; essential data','Essential data','badge-red',`
+    <ul>
+      <li>Nationality — must match proof of ID &amp; residency</li>
+      <li>Resident in UK/EU for 3 years — required for SFE eligibility</li>
+      <li>Place of birth — must match proof of ID</li>
+      <li>Ethnicity &amp; UK entry date — required for FAF</li>
+      <li>Criminal convictions — any declaration must be escalated immediately</li>
+    </ul>
+    ${outcome('⚠','Must be obtained before progressing to compliance (can advance to Post PFF Check with it pending)')}
+  `),
+  mkCard('Support needs (disability disclosure)','Support','badge-blue',`
+    <p>Record any disability disclosure in <em>Disability Disclosure.xlsx</em>. Send email from admissions mailbox to student including the Declaration Form link and QR code, copying <code>anisur.rahman@ukmc.ac.uk</code> and <code>student.wellbeing@ukmc.ac.uk</code>.</p>
+    <p>Wellbeing Team will confirm available support and communicate adjustments to AO. Adjustments must be noted in Interview Notes.</p>
+  `),
+  mkCard('SFE eligibility','Funding','badge-amber',`
+    <p>Applicants need at least <strong>4 years of SFE funding</strong> remaining, or must self-fund. Typically requires UK nationality/settled status and 3 years' UK residency before the course.</p>
+    <ul>
+      <li>If proof provided (e.g. SFE letter) → application can proceed</li>
+      <li>Self-funding → escalate details to Finance team for verification</li>
+    </ul>
+    ${outcome('✗','No proof → UNSUCCESSFUL AT PRESCREENING – Not eligible for Student Finance')}
+  `),
+  mkCard('Document verification','Documents','badge-blue',`
+    <div class="section-label" style="margin-top:0">Essential at pre-screening</div>
+    <ul>
+      <li><strong>Residency / Share Code</strong> — check via gov.uk; download PDF; upload as FIRSTNAME SURNAME DOCUMENT TYPE</li>
+      <li><strong>Photo ID</strong> (passport, UK driving licence, birth cert, EU ID) — colour image, full document, no obstructions; verify holograms, micro-data, font consistency</li>
+    </ul>
+    <div class="section-label">Non-essential (can be obtained post-PFF)</div>
+    <ul>
+      <li>Proof of address — utility bill, bank statement (3 months+ active), official correspondence; dated within 6 months</li>
+      <li>CV — required for non-academic applicants; full name, address, work history</li>
+      <li>Qualifications — certificate or transcript; verify online or check authenticity (seal, hologram, watermark)</li>
+      <li>LRS (Learner Record Service) — determines academic vs non-academic application type</li>
+    </ul>
+  `),
+  mkCard('Pre-screening outcomes','Outcomes','badge-green',`
+    ${outcome('📄','Missing docs → mark Pending Documents; contact applicant directly')}
+    ${outcome('🚫','Fraud detected → red-list permanently; report to authorities; rejection email sent')}
+    ${outcome('✓','All criteria met → status updated to "Ready for PFF/PFD Pre-Task"; automated invite sent')}
+  `),
+];
+
+const s2=[
+  mkCard('Pre-task requirements','Pre-task','badge-blue',`
+    <ul>
+      <li>Word count: <strong>135–165 words</strong> (±10%)</li>
+      <li>Good English, grammar, and punctuation</li>
+      <li>Must answer the question and relate to desired programme</li>
+      <li>Less than 20% average plagiarism</li>
+    </ul>
+    <p style="margin-top:8px">Applicants may have <strong>two attempts</strong>. Fail reasons must be noted in attempt comments.</p>
+    ${outcome('✓','Pass → AO updates progress to "Ready for PFF/PFD"; booking link sent; pre-task auto-added to booking')}
+  `),
+  mkCard('PFF Day — on the day','On the day','badge-amber',`
+    <ul>
+      <li>Check-in starts 09:00; applicants guided to check-in room</li>
+      <li>ID checked for every attendee</li>
+      <li>After 10:00 → marked "Punctual No"; may attend until 10:10</li>
+      <li>PFF staff have autonomy to admit or reject applicants</li>
+    </ul>
+    <hr class="divider">
+    <strong style="font-size:12px">Documents checked at handover</strong>
+    <ul>
+      <li>Human Bingo, Pre-Task Questions, Reflections Task, Known Student Declaration</li>
+    </ul>
+  `),
+  mkCard('Post-PFF audit','Audit','badge-amber',`
+    <p>Admissions Manager audits 5% (minimum 3) of completed PFF documents after each day. Checks include:</p>
+    <ul>
+      <li>Pre-task completed before 24-hour deadline; correct file/naming</li>
+      <li>Pre-task meets plagiarism, English quality, and length requirements</li>
+      <li>PFF tracking sheet fields complete; ID checks and lecturer signatures present</li>
+      <li>Summary matches outcome; applicant name/person code matches EBS</li>
+    </ul>
+    <p style="margin-top:6px">Audit and moderation sheet sent to Campus Head and Dr. John Obeng for sign-off.</p>
+  `),
+  mkCard('PFF Day rules &amp; outcomes','Rules','badge-green',`
+    <ul>
+      <li>Maximum <strong>3 bookings/no-shows</strong> before deemed unsuccessful for failure to attend</li>
+      <li>Sample check and audit must be completed before document scanning</li>
+      <li>Scanning within <strong>24 working hours</strong>; results released within <strong>2–3 working days</strong></li>
+    </ul>
+    ${outcome('✓','Successful → progress code: "PFF Day Attended"')}
+    ${outcome('✗','Unsuccessful → feedback given; referred to free English classes')}
+    ${outcome('–','No show → contact applicant; re-issue booking link; update to "PFF Day No Show (1/2/3)"')}
+  `),
+];
+
+const s3=[
+  mkCard('PFF tracking sheet check','Check','badge-blue',`
+    <p>Before completing the summary sheet, verify:</p>
+    <ul>
+      <li>Passes in all relevant fields</li>
+      <li>Attendance and pre-task marked complete</li>
+      <li>"Passed" and "Offer a Place" both marked YES</li>
+    </ul>
+    <p style="margin-top:6px">Any incomplete fields → contact academic team, CC Admissions Manager and Student Support Co-ordinator.</p>
+    ${outcome('✗','Not passed PFF → progress code: "Unsuccessful at PFF Day"; applicant cannot continue this intake')}
+  `),
+  mkCard('PFF summary sheet','Summary','badge-blue',`
+    <p>Complete the PFF Summary sheet for every applicant using academic feedback from the PFF Tracking Sheet. Save as PDF and upload to PFF One Drive as: <em>FIRSTNAME SURNAME DOCUMENT TYPE</em>.</p>
+  `),
+  mkCard('Post-PFF check (repeat Stage 1 checks)','Post-PFF check','badge-amber',`
+    <p>Re-verify all applicant details and documents are correct, accurate, and up to date. Confirm interview notes completed and applicant video uploaded.</p>
+  `),
+  mkCard('Compliance One Drive folder','Compliance folder','badge-amber',`
+    <p>Create folder: <strong>FIRSTNAME SURNAME PERSON CODE</strong> in the correct centre folder. Upload only the most recent/relevant versions of each document, named as <em>FIRSTNAME SURNAME DOCUMENT TYPE</em>:</p>
+    <ul>
+      <li>Proof of ID &amp; Proof of Address</li>
+      <li>Residency status (share code)</li>
+      <li>Qualifications (if required) &amp; CV (if provided)</li>
+      <li>Interview sheet &amp; video</li>
+      <li>PFF pre-task, interview activities/reflections, PFF summary</li>
+    </ul>
+    ${outcome('⚠','Incorrectly uploaded documents = compliance fail. Repeated failures → disciplinary action')}
+  `),
+  mkCard('Compliance check outcomes','Outcomes','badge-green',`
+    ${outcome('📄','Missing essential docs → progress code: "PFF Compliance Check Pending"; contact applicant and recruitment within 2 working days')}
+    ${outcome('🚫','Fraud found → red-list; progress code: "Compliance Rejected"; authorities notified')}
+    ${outcome('✓','All clear → progress code: "PFF Ready to Submit"')}
+  `),
+];
+
+const s4=[
+  mkCard('Application creation (E-Vision portal)','Create','badge-blue',`
+    <p>Access University of Wolverhampton E-Vision portal. Select campus code:</p>
+    <ul>
+      <li><strong>MQ</strong> — Abana Campus</li>
+      <li><strong>MV</strong> — Sunderland Campus</li>
+      <li><strong>MX</strong> — Newcastle Campus</li>
+      <li><strong>MZ</strong> — Derby Campus</li>
+    </ul>
+    <p style="margin-top:6px">Any errors must be communicated to Admissions Manager immediately. Issues accessing portal → email <code>evisionsupport@wlv.ac.uk</code>, CC Admissions Manager.</p>
+  `),
+  mkCard('Document submission','Docs','badge-blue',`
+    <p>Obtain UOW ID from confirmation email or E-Vision. Upload each document via "Upload Application Documents for Applicants" — select <em>Other</em> as document type, enter description, select file.</p>
+    ${outcome('⚠','Submitting documents to the wrong applicant is a significant data protection breach. Use naming conventions to mitigate risk. Do NOT upload interview video.')}
+    <p style="margin-top:8px">After all docs submitted → update progress code to "File Submitted". Add UOW ID to EBS for ID card printing.</p>
+  `),
+  mkCard('Fee Assessment Form (FAF)','FAF','badge-amber',`
+    <p>Complete the FAF on behalf of the applicant at <code>https://join.wlv.ac.uk/form/admissions-fee-assesment</code> using EBS information.</p>
+    <ul>
+      <li>Mother &amp; father nationality → assume same as applicant unless stated otherwise</li>
+      <li>Contact method → email only</li>
+    </ul>
+  `),
+  mkCard('Submission outcomes','Outcomes','badge-green',`
+    ${outcome('📋','Application submitted, FAF pending → progress code: "PFF File Submitted"')}
+    ${outcome('✓','Application submitted + FAF complete → progress code: "PFF File Complete"')}
+    ${outcome('✗','University partner rejects → applicant notified; progress code: "Uni Rejection"')}
+    ${outcome('🎓','UOW review complete → progress code: "Enrolled" (set by Registration Team)')}
+  `),
+];
+
+const misc=[
+  mkCard('Progress codes not tied to a stage','Misc codes','badge-gray',`
+    <ul>
+      <li><strong>XC – Canx.Closed</strong> — application incomplete at end of admissions intake</li>
+      <li><strong>W – Withdrawn</strong> — withdrawn at applicant's request</li>
+      <li><strong>STBS – Student w/d B. Submission</strong> — withdrawn after PFF but before E-Vision submission</li>
+      <li><strong>STWD – Student w/d A. Submission</strong> — withdrawn after submission to E-Vision</li>
+      <li><strong>INPHOLD – In Progress, on Hold</strong> — cannot be progressed due to a UKMC issue</li>
+    </ul>
+  `),
+  mkCard('Admissions best practices','Best practices','badge-green',`
+    <ul>
+      <li>Maintain a personal record of assigned applications with chase/follow-up reminders (Excel or Outlook calendar)</li>
+      <li>Clear downloads folder immediately after each submission — most data protection breaches stem from excess files here</li>
+      <li>Check work thoroughly; maintain attention to detail throughout</li>
+      <li>Plan your day: assign &amp; duplicate-check first, chase pending docs after pre-screening, then submissions</li>
+      <li>Know the academic calendar — post-PFF work must be completed the next working day</li>
+      <li>Report errors immediately to relevant individuals; always notify the Admissions Manager</li>
+      <li>Support each other and ask for help when needed</li>
+      <li>Update notes immediately when new information becomes available</li>
+    </ul>
+  `),
+  mkCard('Fraud policy','Fraud','badge-red',`
+    <p>Deliberate forgery → applicant is <strong>red-listed permanently</strong> and ineligible to reapply. Applicant retains the right to appeal by emailing admissions.</p>
+    <p style="margin-top:6px">Suspected (but unconfirmed) fraud → AO discusses with panel: Head of Admissions (or nominee) + Head of Quality &amp; Compliance (or nominee). Applicant may be required to attend a meeting or provide corroborating evidence.</p>
+    <p style="margin-top:6px">If application originates from a Recruitment Partner, recording procedures are in the Marketing, Recruitment and Admissions Policy.</p>
+  `),
+];
+
+document.getElementById('cards-s1').innerHTML=s1.join('');
+document.getElementById('cards-s2').innerHTML=s2.join('');
+document.getElementById('cards-s3').innerHTML=s3.join('');
+document.getElementById('cards-s4').innerHTML=s4.join('');
+document.getElementById('cards-misc').innerHTML=misc.join('');
+</script>
+</body>
+</html>
